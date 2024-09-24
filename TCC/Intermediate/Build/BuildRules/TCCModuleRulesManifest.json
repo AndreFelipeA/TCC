@@ -1,0 +1,8 @@
+{
+	"SourceFiles": [
+		"D:\\TCC\\TCC\\Source\\TCC\\TCC.Build.cs",
+		"D:\\TCC\\TCC\\Source\\TCC.Target.cs",
+		"D:\\TCC\\TCC\\Source\\TCCEditor.Target.cs"
+	],
+	"EngineVersion": "5.4.4"
+}

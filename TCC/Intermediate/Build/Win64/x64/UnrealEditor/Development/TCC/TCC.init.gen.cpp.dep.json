@@ -1,0 +1,13 @@
+{
+    "Version": "1.2",
+    "Data": {
+        "Source": "d:\\tcc\\tcc\\intermediate\\build\\win64\\unrealeditor\\inc\\tcc\\uht\\tcc.init.gen.cpp",
+        "ProvidedModule": "",
+        "PCH": "d:\\tcc\\tcc\\intermediate\\build\\win64\\x64\\tcceditor\\development\\unrealed\\sharedpch.unrealed.project.valapi.cpp20.h.pch",
+        "Includes": [
+            "d:\\tcc\\tcc\\intermediate\\build\\win64\\x64\\unrealeditor\\development\\tcc\\definitions.tcc.h"
+        ],
+        "ImportedModules": [],
+        "ImportedHeaderUnits": []
+    }
+}
