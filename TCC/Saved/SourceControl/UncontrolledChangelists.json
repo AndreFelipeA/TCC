@@ -5,6 +5,12 @@
 			"guid": "00000000000000000000000000000000",
 			"description": "Default Uncontrolled Changelist",
 			"files": [
+				"D:/TCC/TCC/Content/WFC/BP_Tile_Blue.uasset",
+				"D:/TCC/TCC/Content/WFC/BP_Tile_Red.uasset",
+				"D:/TCC/TCC/Content/WFC/Material/Red.uasset",
+				"D:/TCC/TCC/Content/WFC/Material/Yellow.uasset",
+				"D:/TCC/TCC/Content/WFC/BP_Tile_Yellow.uasset",
+				"D:/TCC/TCC/Content/WFC/Tile.uasset",
 				"D:/TCC/TCC/Content/Teste/BP_Tile.uasset"
 			]
 		}

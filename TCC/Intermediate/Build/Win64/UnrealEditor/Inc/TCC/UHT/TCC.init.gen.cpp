@@ -17,13 +17,13 @@ void EmptyLinkFunctionForGeneratedCodeTCC_init() {}
 				nullptr,
 				0,
 				PKG_CompiledIn | 0x00000000,
-				0xCED4ED1B,
-				0xE1EAC6B8,
+				0x47064926,
+				0xCD1586B1,
 				METADATA_PARAMS(0, nullptr)
 			};
 			UECodeGen_Private::ConstructUPackage(Z_Registration_Info_UPackage__Script_TCC.OuterSingleton, PackageParams);
 		}
 		return Z_Registration_Info_UPackage__Script_TCC.OuterSingleton;
 	}
-	static FRegisterCompiledInInfo Z_CompiledInDeferPackage_UPackage__Script_TCC(Z_Construct_UPackage__Script_TCC, TEXT("/Script/TCC"), Z_Registration_Info_UPackage__Script_TCC, CONSTRUCT_RELOAD_VERSION_INFO(FPackageReloadVersionInfo, 0xCED4ED1B, 0xE1EAC6B8));
+	static FRegisterCompiledInInfo Z_CompiledInDeferPackage_UPackage__Script_TCC(Z_Construct_UPackage__Script_TCC, TEXT("/Script/TCC"), Z_Registration_Info_UPackage__Script_TCC, CONSTRUCT_RELOAD_VERSION_INFO(FPackageReloadVersionInfo, 0x47064926, 0xCD1586B1));
 PRAGMA_ENABLE_DEPRECATION_WARNINGS
