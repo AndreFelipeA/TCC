@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <None Include="..\..\TCCzin.uproject" />
+    <Filter Include="Source">
+      <UniqueIdentifier>{F31BBDD1-B3E8-3BCC-9652-680E16935819}</UniqueIdentifier>
+    </Filter>
+    <None Include="..\..\Source\TCCzin.Target.cs">
+      <Filter>Source</Filter>
+    </None>
+    <None Include="..\..\Source\TCCzinEditor.Target.cs">
+      <Filter>Source</Filter>
+    </None>
+    <None Include="..\..\.vsconfig" />
+    <Filter Include="Config">
+      <UniqueIdentifier>{FA535FFB-25E1-3D20-B416-52F9BE21E06E}</UniqueIdentifier>
+    </Filter>
+    <None Include="..\..\Config\DefaultEditor.ini">
+      <Filter>Config</Filter>
+    </None>
+    <None Include="..\..\Config\DefaultEngine.ini">
+      <Filter>Config</Filter>
+    </None>
+    <None Include="..\..\Config\DefaultGame.ini">
+      <Filter>Config</Filter>
+    </None>
+    <None Include="..\..\Config\DefaultInput.ini">
+      <Filter>Config</Filter>
+    </None>
+    <Filter Include="Source\TCCzin">
+      <UniqueIdentifier>{78A45019-7E71-3095-BC04-06B81CB132C4}</UniqueIdentifier>
+    </Filter>
+    <None Include="..\..\Source\TCCzin\TCCzin.Build.cs">
+      <Filter>Source\TCCzin</Filter>
+    </None>
+    <ClCompile Include="..\..\Source\TCCzin\TCCzin.cpp">
+      <Filter>Source\TCCzin</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\TCCzin\TCCzin.h">
+      <Filter>Source\TCCzin</Filter>
+    </ClCompile>
+    <Filter Include="Source\TCCzin\Private">
+      <UniqueIdentifier>{8874CB14-DDCE-36A6-B210-5A5F8C2D636D}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\TCCzin\Private\WFC">
+      <UniqueIdentifier>{7ECB3080-644B-344A-B9E5-A1985F68960D}</UniqueIdentifier>
+    </Filter>
+    <ClCompile Include="..\..\Source\TCCzin\Private\WFC\ObjectTile.cpp">
+      <Filter>Source\TCCzin\Private\WFC</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\TCCzin\Private\WFC\Tile.cpp">
+      <Filter>Source\TCCzin\Private\WFC</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\TCCzin\Private\WFC\WFC.cpp">
+      <Filter>Source\TCCzin\Private\WFC</Filter>
+    </ClCompile>
+    <Filter Include="Source\TCCzin\Public">
+      <UniqueIdentifier>{C86538E0-D8F7-325D-9D38-5452F2F51A6E}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\TCCzin\Public\WFC">
+      <UniqueIdentifier>{7F78864C-9C44-346C-B408-F607CDF2DB31}</UniqueIdentifier>
+    </Filter>
+    <ClCompile Include="..\..\Source\TCCzin\Public\WFC\ObjectTile.h">
+      <Filter>Source\TCCzin\Public\WFC</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\TCCzin\Public\WFC\Tile.h">
+      <Filter>Source\TCCzin\Public\WFC</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\TCCzin\Public\WFC\WFC.h">
+      <Filter>Source\TCCzin\Public\WFC</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>

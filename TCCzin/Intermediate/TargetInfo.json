@@ -1,0 +1,14 @@
+{
+	"Targets": [
+		{
+			"Name": "TCCzin",
+			"Path": "..\\Source\\TCCzin.Target.cs",
+			"Type": "Game"
+		},
+		{
+			"Name": "TCCzinEditor",
+			"Path": "..\\Source\\TCCzinEditor.Target.cs",
+			"Type": "Editor"
+		}
+	]
+}
