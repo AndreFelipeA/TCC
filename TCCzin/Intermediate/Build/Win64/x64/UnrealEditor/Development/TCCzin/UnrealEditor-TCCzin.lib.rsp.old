@@ -7,10 +7,12 @@
 /IGNORE:4221
 /NODEFAULTLIB
 "D:\TCCzin\Intermediate\Build\Win64\x64\TCCzinEditor\Development\UnrealEd\SharedPCH.UnrealEd.Project.ValApi.Cpp20.h.obj"
+"D:\TCCzin\Intermediate\Build\Win64\x64\UnrealEditor\Development\TCCzin\ObjectTile.gen.cpp.obj"
 "D:\TCCzin\Intermediate\Build\Win64\x64\UnrealEditor\Development\TCCzin\TCCzin.init.gen.cpp.obj"
 "D:\TCCzin\Intermediate\Build\Win64\x64\UnrealEditor\Development\TCCzin\Tile.gen.cpp.obj"
 "D:\TCCzin\Intermediate\Build\Win64\x64\UnrealEditor\Development\TCCzin\WFC.gen.cpp.obj"
 "D:\TCCzin\Intermediate\Build\Win64\x64\UnrealEditor\Development\TCCzin\TCCzin.cpp.obj"
+"D:\TCCzin\Intermediate\Build\Win64\x64\UnrealEditor\Development\TCCzin\ObjectTile.cpp.obj"
 "D:\TCCzin\Intermediate\Build\Win64\x64\UnrealEditor\Development\TCCzin\Tile.cpp.obj"
 "D:\TCCzin\Intermediate\Build\Win64\x64\UnrealEditor\Development\TCCzin\WFC.cpp.obj"
 "D:\TCCzin\Intermediate\Build\Win64\x64\UnrealEditor\Development\TCCzin\PerModuleInline.gen.cpp.obj"

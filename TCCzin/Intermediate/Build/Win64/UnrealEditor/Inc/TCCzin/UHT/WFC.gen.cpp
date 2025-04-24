@@ -355,7 +355,7 @@ UWFC::~UWFC() {}
 // End Class UWFC
 
 // Begin Registration
-struct Z_CompiledInDeferFile_FID_TCCzin_Source_TCCzin_Public_WFC_WFC_h_Statics
+struct Z_CompiledInDeferFile_FID_TCC_TCCzin_Source_TCCzin_Public_WFC_WFC_h_Statics
 {
 	static constexpr FStructRegisterCompiledInInfo ScriptStructInfo[] = {
 		{ FMatrixArray::StaticStruct, Z_Construct_UScriptStruct_FMatrixArray_Statics::NewStructOps, TEXT("MatrixArray"), &Z_Registration_Info_UScriptStruct_MatrixArray, CONSTRUCT_RELOAD_VERSION_INFO(FStructReloadVersionInfo, sizeof(FMatrixArray), 4068369908U) },
@@ -366,9 +366,9 @@ struct Z_CompiledInDeferFile_FID_TCCzin_Source_TCCzin_Public_WFC_WFC_h_Statics
 		{ Z_Construct_UClass_UWFC, UWFC::StaticClass, TEXT("UWFC"), &Z_Registration_Info_UClass_UWFC, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(UWFC), 1542988912U) },
 	};
 };
-static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_TCCzin_Source_TCCzin_Public_WFC_WFC_h_3377777510(TEXT("/Script/TCCzin"),
-	Z_CompiledInDeferFile_FID_TCCzin_Source_TCCzin_Public_WFC_WFC_h_Statics::ClassInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_TCCzin_Source_TCCzin_Public_WFC_WFC_h_Statics::ClassInfo),
-	Z_CompiledInDeferFile_FID_TCCzin_Source_TCCzin_Public_WFC_WFC_h_Statics::ScriptStructInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_TCCzin_Source_TCCzin_Public_WFC_WFC_h_Statics::ScriptStructInfo),
+static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_TCC_TCCzin_Source_TCCzin_Public_WFC_WFC_h_3377777510(TEXT("/Script/TCCzin"),
+	Z_CompiledInDeferFile_FID_TCC_TCCzin_Source_TCCzin_Public_WFC_WFC_h_Statics::ClassInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_TCC_TCCzin_Source_TCCzin_Public_WFC_WFC_h_Statics::ClassInfo),
+	Z_CompiledInDeferFile_FID_TCC_TCCzin_Source_TCCzin_Public_WFC_WFC_h_Statics::ScriptStructInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_TCC_TCCzin_Source_TCCzin_Public_WFC_WFC_h_Statics::ScriptStructInfo),
 	nullptr, 0);
 // End Registration
 PRAGMA_ENABLE_DEPRECATION_WARNINGS

@@ -1,12 +1,12 @@
 {
     "Version": "1.2",
     "Data": {
-        "Source": "d:\\tcczin\\source\\tcczin\\tcczin.cpp",
+        "Source": "d:\\tcc\\tcczin\\source\\tcczin\\tcczin.cpp",
         "ProvidedModule": "",
-        "PCH": "d:\\tcczin\\intermediate\\build\\win64\\x64\\tcczineditor\\development\\unrealed\\sharedpch.unrealed.project.valapi.cpp20.h.pch",
+        "PCH": "d:\\tcc\\tcczin\\intermediate\\build\\win64\\x64\\tcczineditor\\development\\unrealed\\sharedpch.unrealed.project.valapi.cpp20.h.pch",
         "Includes": [
-            "d:\\tcczin\\intermediate\\build\\win64\\x64\\unrealeditor\\development\\tcczin\\definitions.tcczin.h",
-            "d:\\tcczin\\source\\tcczin\\tcczin.h"
+            "d:\\tcc\\tcczin\\intermediate\\build\\win64\\x64\\unrealeditor\\development\\tcczin\\definitions.tcczin.h",
+            "d:\\tcc\\tcczin\\source\\tcczin\\tcczin.h"
         ],
         "ImportedModules": [],
         "ImportedHeaderUnits": []

@@ -1,12 +1,12 @@
-"D:\TCCzin\Source\TCCzin\TCCzin.cpp"
-/FI"D:\TCCzin\Intermediate\Build\Win64\x64\TCCzinEditor\Development\UnrealEd\SharedPCH.UnrealEd.Project.ValApi.Cpp20.h"
-/FI"D:\TCCzin\Intermediate\Build\Win64\x64\UnrealEditor\Development\TCCzin\Definitions.TCCzin.h"
-/Yu"D:\TCCzin\Intermediate\Build\Win64\x64\TCCzinEditor\Development\UnrealEd\SharedPCH.UnrealEd.Project.ValApi.Cpp20.h"
-/Fp"D:\TCCzin\Intermediate\Build\Win64\x64\TCCzinEditor\Development\UnrealEd\SharedPCH.UnrealEd.Project.ValApi.Cpp20.h.pch"
-/Fo"D:\TCCzin\Intermediate\Build\Win64\x64\UnrealEditor\Development\TCCzin\TCCzin.cpp.obj"
-/experimental:log "D:\TCCzin\Intermediate\Build\Win64\x64\UnrealEditor\Development\TCCzin\TCCzin.cpp.sarif"
-/sourceDependencies "D:\TCCzin\Intermediate\Build\Win64\x64\UnrealEditor\Development\TCCzin\TCCzin.cpp.dep.json"
-@"D:\TCCzin\Intermediate\Build\Win64\x64\UnrealEditor\Development\TCCzin\TCCzin.Shared.rsp"
+"D:\TCC\TCCzin\Source\TCCzin\TCCzin.cpp"
+/FI"D:\TCC\TCCzin\Intermediate\Build\Win64\x64\TCCzinEditor\Development\UnrealEd\SharedPCH.UnrealEd.Project.ValApi.Cpp20.h"
+/FI"D:\TCC\TCCzin\Intermediate\Build\Win64\x64\UnrealEditor\Development\TCCzin\Definitions.TCCzin.h"
+/Yu"D:\TCC\TCCzin\Intermediate\Build\Win64\x64\TCCzinEditor\Development\UnrealEd\SharedPCH.UnrealEd.Project.ValApi.Cpp20.h"
+/Fp"D:\TCC\TCCzin\Intermediate\Build\Win64\x64\TCCzinEditor\Development\UnrealEd\SharedPCH.UnrealEd.Project.ValApi.Cpp20.h.pch"
+/Fo"D:\TCC\TCCzin\Intermediate\Build\Win64\x64\UnrealEditor\Development\TCCzin\TCCzin.cpp.obj"
+/experimental:log "D:\TCC\TCCzin\Intermediate\Build\Win64\x64\UnrealEditor\Development\TCCzin\TCCzin.cpp.sarif"
+/sourceDependencies "D:\TCC\TCCzin\Intermediate\Build\Win64\x64\UnrealEditor\Development\TCCzin\TCCzin.cpp.dep.json"
+@"D:\TCC\TCCzin\Intermediate\Build\Win64\x64\UnrealEditor\Development\TCCzin\TCCzin.Shared.rsp"
 /d2ssa-cfg-question-
 /Zc:inline
 /nologo

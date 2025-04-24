@@ -1,8 +1,8 @@
 {
 	"SourceFiles": [
-		"D:\\TCCzin\\Source\\TCCzin\\TCCzin.Build.cs",
-		"D:\\TCCzin\\Source\\TCCzin.Target.cs",
-		"D:\\TCCzin\\Source\\TCCzinEditor.Target.cs"
+		"D:\\TCC\\TCCzin\\Source\\TCCzin\\TCCzin.Build.cs",
+		"D:\\TCC\\TCCzin\\Source\\TCCzin.Target.cs",
+		"D:\\TCC\\TCCzin\\Source\\TCCzinEditor.Target.cs"
 	],
 	"EngineVersion": "5.5.4"
 }

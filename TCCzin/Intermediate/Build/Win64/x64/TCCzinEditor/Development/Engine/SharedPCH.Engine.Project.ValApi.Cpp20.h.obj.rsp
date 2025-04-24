@@ -1,4 +1,4 @@
-"D:\TCCzin\Intermediate\Build\Win64\x64\TCCzinEditor\Development\Engine\SharedPCH.Engine.Project.ValApi.Cpp20.cpp"
+"D:\TCC\TCCzin\Intermediate\Build\Win64\x64\TCCzinEditor\Development\Engine\SharedPCH.Engine.Project.ValApi.Cpp20.cpp"
 /I "."
 /I "..\Intermediate\Build\Win64\UnrealEditor\Inc\Engine\UHT"
 /I "Runtime\Engine\Classes"
@@ -298,10 +298,10 @@
 /external:I "C:\Program Files (x86)\Windows Kits\10\include\10.0.20348.0\um"
 /external:I "C:\Program Files (x86)\Windows Kits\10\include\10.0.20348.0\winrt"
 /Yc"SharedPCH.Engine.Project.ValApi.Cpp20.h"
-/Fp"D:\TCCzin\Intermediate\Build\Win64\x64\TCCzinEditor\Development\Engine\SharedPCH.Engine.Project.ValApi.Cpp20.h.pch"
-/Fo"D:\TCCzin\Intermediate\Build\Win64\x64\TCCzinEditor\Development\Engine\SharedPCH.Engine.Project.ValApi.Cpp20.h.obj"
-/experimental:log "D:\TCCzin\Intermediate\Build\Win64\x64\TCCzinEditor\Development\Engine\SharedPCH.Engine.Project.ValApi.Cpp20.h.sarif"
-/sourceDependencies "D:\TCCzin\Intermediate\Build\Win64\x64\TCCzinEditor\Development\Engine\SharedPCH.Engine.Project.ValApi.Cpp20.h.dep.json"
+/Fp"D:\TCC\TCCzin\Intermediate\Build\Win64\x64\TCCzinEditor\Development\Engine\SharedPCH.Engine.Project.ValApi.Cpp20.h.pch"
+/Fo"D:\TCC\TCCzin\Intermediate\Build\Win64\x64\TCCzinEditor\Development\Engine\SharedPCH.Engine.Project.ValApi.Cpp20.h.obj"
+/experimental:log "D:\TCC\TCCzin\Intermediate\Build\Win64\x64\TCCzinEditor\Development\Engine\SharedPCH.Engine.Project.ValApi.Cpp20.h.sarif"
+/sourceDependencies "D:\TCC\TCCzin\Intermediate\Build\Win64\x64\TCCzinEditor\Development\Engine\SharedPCH.Engine.Project.ValApi.Cpp20.h.dep.json"
 /d2ssa-cfg-question-
 /Zc:inline
 /nologo
