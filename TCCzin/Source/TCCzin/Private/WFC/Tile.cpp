@@ -19,10 +19,5 @@ ATile::ATile(void)
 void ATile::BeginPlay()
 {
 	Super::BeginPlay();
-
-	if (MaterialInterface)
-	{
-		StaticMeshComponent->SetMaterial(0, MaterialInterface);
-		
-	}
+	
 }

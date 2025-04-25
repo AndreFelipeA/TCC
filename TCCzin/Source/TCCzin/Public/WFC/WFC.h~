@@ -1,0 +1,122 @@
+// Fill out your copyright notice in the Description page of Project Settings.
+
+#pragma once
+
+#include "CoreMinimal.h"
+#include "Containers/Deque.h"
+#include "WFC.generated.h"
+
+class UObjectTile;
+class ATile;
+
+USTRUCT()
+struct FMatrixArray
+{
+	GENERATED_BODY()
+public:
+
+	UPROPERTY(EditAnywhere)
+	TArray<ATile*> M;
+	ATile& operator[] (int32 i) { return *M[i]; }
+	
+	void Add(ATile* Tile)
+	{
+		M.Add(Tile);
+	}
+};
+
+USTRUCT()
+struct FMatrixBool
+{
+	GENERATED_BODY()
+public:
+
+	UPROPERTY(EditAnywhere)
+	TArray<bool> M;
+	bool& operator[] (int32 i) { return M[i]; }
+	
+	void Add(bool Tile)
+	{
+		M.Add(Tile);
+	}
+};
+
+	USTRUCT()
+	struct FMatrixObject
+	{
+		GENERATED_BODY()
+	public:
+
+		UPROPERTY(EditAnywhere)
+		TArray<TObjectPtr<UObjectTile>> M;
+		TObjectPtr<UObjectTile>& operator[] (const int32 i) { return M[i]; }
+		
+		void Add(TObjectPtr<UObjectTile> Tile)
+		{
+			M.Add(*Tile);
+		}
+	};
+
+enum EObserveStatus
+{
+	Success,
+	Failure,
+	Continue
+};
+
+
+/**
+ * 
+ */
+UCLASS(BlueprintType, Blueprintable)
+class TCCZIN_API UWFC : public UObject
+{
+	GENERATED_BODY()
+
+public:
+	UWFC();
+
+	UFUNCTION(BlueprintCallable)
+	void WFC();
+
+	TSubclassOf<UObjectTile> GetRandomTile();	
+protected:
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	TMap<int , TSubclassOf<UObjectTile>> Tiles;
+
+	TDeque<TTuple<int,int>> Queue;
+
+
+	TArray<FMatrixArray> SpawnGrid;
+
+	TArray<FMatrixObject> Grid;
+
+	
+	TArray<FMatrixBool> MBool;
+	
+	UPROPERTY(EditAnywhere)
+	int Width;
+	UPROPERTY(EditAnywhere)
+	int Height;
+
+	int64 Infinity = 9223372036854775807;
+
+	TTuple<int,int> Wave;
+
+	int GetNextPos();
+
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	TSubclassOf<UObjectTile> InitTile;
+
+
+	EObserveStatus Observe();
+	
+
+	void WaveToOutput();
+
+	void AC3();
+
+	void print();
+	
+};

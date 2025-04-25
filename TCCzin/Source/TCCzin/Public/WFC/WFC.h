@@ -106,16 +106,12 @@ protected:
 	int GetNextPos();
 
 
-	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-	TSubclassOf<UObjectTile> InitTile;
-
-
 	EObserveStatus Observe();
 	
 
 	void WaveToOutput();
 
-	void AC3(TTuple<int,int> Tile);
+	void AC3();
 
 	void print();
 	

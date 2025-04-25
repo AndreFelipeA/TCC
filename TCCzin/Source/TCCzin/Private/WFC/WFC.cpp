@@ -53,10 +53,7 @@ void UWFC::WFC()
 	while (true)
 	{
 		EObserveStatus result = Observe();
-
 		
-
-	
 		if (result == Failure)
 		{
 			UE_LOG(LogClass, Log, TEXT("---------------- DEU MERDA -----------------"));
@@ -70,7 +67,7 @@ void UWFC::WFC()
 			return;
 		}
 		
-		AC3(Wave);
+		AC3();
 		print();
 
 		
@@ -121,8 +118,17 @@ EObserveStatus UWFC::Observe()
 	UE_LOG(LogClass, Log, TEXT("Escolhi o : %d:%d"), x, y);
 
 	TSubclassOf<UObjectTile> tile = GetRandomTile();
-	Grid[x][y]->ValidNeighbours = tile.GetDefaultObject()->ValidNeighbours;
-	Grid[x][y]->MaterialInterface = tile.GetDefaultObject()->MaterialInterface;
+	if (tile != nullptr)
+	{
+		Grid[x][y]->ValidNeighbours = tile.GetDefaultObject()->ValidNeighbours;
+		Grid[x][y]->MaterialInterface = tile.GetDefaultObject()->MaterialInterface;
+		
+	}
+	else
+	{
+		UE_LOG(LogClass, Log, TEXT("Escolhi: %d,%d e veio null"), x, y);
+
+	}
 
 	
 
@@ -132,13 +138,14 @@ EObserveStatus UWFC::Observe()
 }
 
 
-void UWFC::AC3(TTuple<int, int> Tile)
+void UWFC::AC3()
 {
 		while (!Queue.IsEmpty())
     	{
     		TTuple<int, int> tile = Queue.First();
     		Queue.PopFirst();
-    
+			UE_LOG(LogClass, Log, TEXT("Queue Tam : %d"), Queue.Num());
+
     		int x = tile.Get<0>();
     		int y = tile.Get<1>();
     		
@@ -149,22 +156,42 @@ void UWFC::AC3(TTuple<int, int> Tile)
     		for (int i = 0; i < 4; i++)
     		{
     			TArray<int> TilesToRemove;
-    			if (x + Directions_x[i] >= 0 && x + Directions_x[i] < Width && y + Directions_y[i] >= 0 && y + Directions_y[i] < Height && MBool[x + Directions_x[i]][y + Directions_y[i]] == true)
-    			{
-    				UE_LOG(LogClass, Log, TEXT("AC3 o : %d,%d"), x+Directions_x[i], y+Directions_y[i]);
 
-    				for (auto it = Grid[x+Directions_x[i]][y+Directions_y[i]]->ValidTiles.CreateConstIterator(); it; ++it)
+    			if (MBool[x][y] == false)
+    			{
+    				if (x + Directions_x[i] >= 0 && x + Directions_x[i] < Width && y + Directions_y[i] >= 0 && y + Directions_y[i] < Height && MBool[x + Directions_x[i]][y + Directions_y[i]] == true)
     				{
-    					if (!Grid[x][y]->ValidNeighbours.Find(it.Key()))
-						{
-							TilesToRemove.Add(it.Key());
-						}
+    					UE_LOG(LogClass, Log, TEXT("AC3 : %d,%d"), x+Directions_x[i], y+Directions_y[i]);
+
+    					for (auto it = Grid[x+Directions_x[i]][y+Directions_y[i]]->ValidTiles.CreateConstIterator(); it; ++it)
+    					{
+    						if (!Grid[x][y]->ValidNeighbours.Find(it.Key()))
+    						{
+    							TilesToRemove.Add(it.Key());
+    						}
+    					}
     				}
     			}
-    			UE_LOG(LogClass, Log, TEXT("Tiles to Remove :%d"), TilesToRemove.Num());
+			    else
+			    {
+			    	if (x + Directions_x[i] >= 0 && x + Directions_x[i] < Width && y + Directions_y[i] >= 0 && y + Directions_y[i] < Height && MBool[x + Directions_x[i]][y + Directions_y[i]] == true)
+			    	{
+			    		UE_LOG(LogClass, Log, TEXT("AC3 sem vizinhos : %d,%d"), x+Directions_x[i], y+Directions_y[i]);
+
+			    		for (auto it = Grid[x+Directions_x[i]][y+Directions_y[i]]->ValidTiles.CreateConstIterator(); it; ++it)
+			    		{
+			    			if (!Grid[x][y]->ValidTiles.Find(it.Key()))
+			    			{
+			    				TilesToRemove.Add(it.Key());
+			    			}
+			    		}
+			    	}
+			    }
+
 
     			if (TilesToRemove.Num() > 0)
     			{
+    				UE_LOG(LogClass, Log, TEXT("Tiles to Remove :%d"), TilesToRemove.Num());
     				for (int j = 0; j < TilesToRemove.Num(); j++)
     				{
     					Grid[x+Directions_x[i]][y+Directions_y[i]]->ValidTiles.Remove(TilesToRemove[j]);
@@ -174,7 +201,7 @@ void UWFC::AC3(TTuple<int, int> Tile)
     				Queue.PushLast(TTuple<int,int> (x+Directions_x[i],y+Directions_y[i]));
     			}
 
-    		
+    			TilesToRemove.Empty();
     			
     		}
     			
@@ -198,8 +225,16 @@ void UWFC::print()
 			{
 				stringNeighbour += it.Value()->GetName();
 			}
-
-			UE_LOG(LogClass, Log, TEXT("pos %d:%d, Neighbours:%s,  Valid tiles %s"), i,j, *stringNeighbour, *string);
+			if (Tile->MaterialInterface != nullptr)
+			{
+				
+				UE_LOG(LogClass, Log, TEXT("pos %d:%d, Cor:%s Neighbours:%s,  Valid tiles %s"), i,j, *Tile->MaterialInterface->GetName() , *stringNeighbour, *string);
+			}
+			else
+			{
+				UE_LOG(LogClass, Log, TEXT("pos %d:%d, Neighbours:%s,  Valid tiles %s"), i,j , *stringNeighbour, *string);
+			}
+			
 			
 		}
 	}
@@ -231,7 +266,7 @@ TSubclassOf<UObjectTile> UWFC::GetRandomTile()
 	int rand =  FMath::RandRange(0, Grid[x][y]->ValidTiles.Num() - 1);
 	int i = 0;
 
-	for (auto it = Grid[i][y]->ValidTiles.CreateConstIterator(); it; ++it)
+	for (auto it = Grid[x][y]->ValidTiles.CreateConstIterator(); it; ++it)
 	{
 		if (i == rand)
 		{

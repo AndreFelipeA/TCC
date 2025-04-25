@@ -281,17 +281,12 @@ struct Z_Construct_UClass_UWFC_Statics
 		{ "Category", "WFC" },
 		{ "ModuleRelativePath", "Public/WFC/WFC.h" },
 	};
-	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_InitTile_MetaData[] = {
-		{ "Category", "WFC" },
-		{ "ModuleRelativePath", "Public/WFC/WFC.h" },
-	};
 #endif // WITH_METADATA
 	static const UECodeGen_Private::FClassPropertyParams NewProp_Tiles_ValueProp;
 	static const UECodeGen_Private::FIntPropertyParams NewProp_Tiles_Key_KeyProp;
 	static const UECodeGen_Private::FMapPropertyParams NewProp_Tiles;
 	static const UECodeGen_Private::FIntPropertyParams NewProp_Width;
 	static const UECodeGen_Private::FIntPropertyParams NewProp_Height;
-	static const UECodeGen_Private::FClassPropertyParams NewProp_InitTile;
 	static const UECodeGen_Private::FPropertyParamsBase* const PropPointers[];
 	static UObject* (*const DependentSingletons[])();
 	static constexpr FClassFunctionLinkInfo FuncInfo[] = {
@@ -308,14 +303,12 @@ const UECodeGen_Private::FIntPropertyParams Z_Construct_UClass_UWFC_Statics::New
 const UECodeGen_Private::FMapPropertyParams Z_Construct_UClass_UWFC_Statics::NewProp_Tiles = { "Tiles", nullptr, (EPropertyFlags)0x0024080000000005, UECodeGen_Private::EPropertyGenFlags::Map, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(UWFC, Tiles), EMapPropertyFlags::None, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_Tiles_MetaData), NewProp_Tiles_MetaData) };
 const UECodeGen_Private::FIntPropertyParams Z_Construct_UClass_UWFC_Statics::NewProp_Width = { "Width", nullptr, (EPropertyFlags)0x0020080000000001, UECodeGen_Private::EPropertyGenFlags::Int, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(UWFC, Width), METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_Width_MetaData), NewProp_Width_MetaData) };
 const UECodeGen_Private::FIntPropertyParams Z_Construct_UClass_UWFC_Statics::NewProp_Height = { "Height", nullptr, (EPropertyFlags)0x0020080000000001, UECodeGen_Private::EPropertyGenFlags::Int, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(UWFC, Height), METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_Height_MetaData), NewProp_Height_MetaData) };
-const UECodeGen_Private::FClassPropertyParams Z_Construct_UClass_UWFC_Statics::NewProp_InitTile = { "InitTile", nullptr, (EPropertyFlags)0x0024080000000005, UECodeGen_Private::EPropertyGenFlags::Class, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(UWFC, InitTile), Z_Construct_UClass_UClass, Z_Construct_UClass_UObjectTile_NoRegister, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_InitTile_MetaData), NewProp_InitTile_MetaData) };
 const UECodeGen_Private::FPropertyParamsBase* const Z_Construct_UClass_UWFC_Statics::PropPointers[] = {
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_UWFC_Statics::NewProp_Tiles_ValueProp,
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_UWFC_Statics::NewProp_Tiles_Key_KeyProp,
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_UWFC_Statics::NewProp_Tiles,
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_UWFC_Statics::NewProp_Width,
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_UWFC_Statics::NewProp_Height,
-	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_UWFC_Statics::NewProp_InitTile,
 };
 static_assert(UE_ARRAY_COUNT(Z_Construct_UClass_UWFC_Statics::PropPointers) < 2048);
 UObject* (*const Z_Construct_UClass_UWFC_Statics::DependentSingletons[])() = {
@@ -363,10 +356,10 @@ struct Z_CompiledInDeferFile_FID_TCC_TCCzin_Source_TCCzin_Public_WFC_WFC_h_Stati
 		{ FMatrixObject::StaticStruct, Z_Construct_UScriptStruct_FMatrixObject_Statics::NewStructOps, TEXT("MatrixObject"), &Z_Registration_Info_UScriptStruct_MatrixObject, CONSTRUCT_RELOAD_VERSION_INFO(FStructReloadVersionInfo, sizeof(FMatrixObject), 553631897U) },
 	};
 	static constexpr FClassRegisterCompiledInInfo ClassInfo[] = {
-		{ Z_Construct_UClass_UWFC, UWFC::StaticClass, TEXT("UWFC"), &Z_Registration_Info_UClass_UWFC, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(UWFC), 1542988912U) },
+		{ Z_Construct_UClass_UWFC, UWFC::StaticClass, TEXT("UWFC"), &Z_Registration_Info_UClass_UWFC, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(UWFC), 3227081098U) },
 	};
 };
-static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_TCC_TCCzin_Source_TCCzin_Public_WFC_WFC_h_3377777510(TEXT("/Script/TCCzin"),
+static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_TCC_TCCzin_Source_TCCzin_Public_WFC_WFC_h_560752852(TEXT("/Script/TCCzin"),
 	Z_CompiledInDeferFile_FID_TCC_TCCzin_Source_TCCzin_Public_WFC_WFC_h_Statics::ClassInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_TCC_TCCzin_Source_TCCzin_Public_WFC_WFC_h_Statics::ClassInfo),
 	Z_CompiledInDeferFile_FID_TCC_TCCzin_Source_TCCzin_Public_WFC_WFC_h_Statics::ScriptStructInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_TCC_TCCzin_Source_TCCzin_Public_WFC_WFC_h_Statics::ScriptStructInfo),
 	nullptr, 0);
