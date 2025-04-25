@@ -151,14 +151,27 @@
 				"D:/TCCzin/Content/__ExternalActors__/Level/WFC/9/GE/AIHOM9G9VPY8KIBOZD73LS.uasset",
 				"D:/TCCzin/Content/__ExternalActors__/Level/WFC/0/1L/WEOEK6JDNMV3QKQ48DKZ98.uasset",
 				"D:/TCCzin/Content/Level/WFC.umap",
-				"D:/TCCzin/Content/WFC/WFC.uasset",
 				"D:/TCCzin/Content/WFC/Material/Red.uasset",
 				"D:/TCCzin/Content/WFC/Material/Blue.uasset",
 				"D:/TCCzin/Content/WFC/Material/Green.uasset",
 				"D:/TCCzin/Content/WFC/Tile_Green.uasset",
 				"D:/TCCzin/Content/WFC/Tile_Blue.uasset",
 				"D:/TCCzin/Content/WFC/Tile_Red.uasset",
-				"D:/TCCzin/Content/WFC/BP_WFC.uasset"
+				"D:/TCCzin/Content/WFC/BP_WFC.uasset",
+				"D:/TCC/TCCzin/Content/WFC/Material/Yellow.uasset",
+				"D:/TCC/TCCzin/Content/WFC/Material/Magenta.uasset",
+				"D:/TCC/TCCzin/Content/WFC/Material/Cyan.uasset",
+				"D:/TCC/TCCzin/Content/WFC/Material/Yellow1.uasset",
+				"D:/TCC/TCCzin/Content/WFC/Material/White.uasset",
+				"D:/TCC/TCCzin/Content/WFC/Tile_Magente.uasset",
+				"D:/TCC/TCCzin/Content/WFC/Tile_White.uasset",
+				"D:/TCC/TCCzin/Content/WFC/Tile_Yellow.uasset",
+				"D:/TCC/TCCzin/Content/WFC/Tile_Cyan.uasset",
+				"D:/TCC/TCCzin/Content/WFC/BP_WFC.uasset",
+				"D:/TCC/TCCzin/Content/WFC/Tile_Red.uasset",
+				"D:/TCC/TCCzin/Content/WFC/Tile_Green.uasset",
+				"D:/TCC/TCCzin/Content/WFC/Tile_Blue.uasset",
+				"D:/TCCzin/Content/WFC/WFC.uasset"
 			]
 		}
 	]

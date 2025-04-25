@@ -180,9 +180,16 @@ void UWFC::AC3()
 
 			    		for (auto it = Grid[x+Directions_x[i]][y+Directions_y[i]]->ValidTiles.CreateConstIterator(); it; ++it)
 			    		{
-			    			if (!Grid[x][y]->ValidTiles.Find(it.Key()))
+			    			
+			    			for (auto it2 = Grid[x][y]->ValidTiles.CreateConstIterator(); it2; ++it2)
 			    			{
-			    				TilesToRemove.Add(it.Key());
+			    				UE_LOG(LogClass, Log, TEXT("Comparando: %s com :%s"), *it.Value()->GetDefaultObject()->GetName(), *it2.Value().GetDefaultObject()->GetName());
+
+			    				if (!it2.Value().GetDefaultObject()->ValidNeighbours.Find(it.Key()))
+			    				{
+			    					
+			    					TilesToRemove.Add(it.Key());
+			    				}
 			    			}
 			    		}
 			    	}
