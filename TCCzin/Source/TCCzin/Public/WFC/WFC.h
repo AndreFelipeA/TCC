@@ -77,7 +77,7 @@ public:
 	UWFC();
 
 	UFUNCTION(BlueprintCallable)
-	void WFC();
+	void WFC(int32 Width, int32 Height);
 
 	TSubclassOf<UObjectTile> GetRandomTile();	
 protected:
@@ -109,6 +109,8 @@ protected:
 	EObserveStatus Observe();
 	
 
+	int Mrv();
+	
 	void WaveToOutput();
 
 	void AC3();
