@@ -13,6 +13,7 @@ void EmptyLinkFunctionForGeneratedCodeObjectTile() {}
 COREUOBJECT_API UClass* Z_Construct_UClass_UClass();
 COREUOBJECT_API UClass* Z_Construct_UClass_UObject();
 ENGINE_API UClass* Z_Construct_UClass_UMaterialInterface_NoRegister();
+ENGINE_API UClass* Z_Construct_UClass_UStaticMesh_NoRegister();
 TCCZIN_API UClass* Z_Construct_UClass_UObjectTile();
 TCCZIN_API UClass* Z_Construct_UClass_UObjectTile_NoRegister();
 UPackage* Z_Construct_UPackage__Script_TCCzin();
@@ -39,7 +40,19 @@ struct Z_Construct_UClass_UObjectTile_Statics
 		{ "IsBlueprintBase", "true" },
 		{ "ModuleRelativePath", "Public/WFC/ObjectTile.h" },
 	};
-	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_ValidNeighbours_MetaData[] = {
+	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_ValidNeighboursN_MetaData[] = {
+		{ "Category", "ObjectTile" },
+		{ "ModuleRelativePath", "Public/WFC/ObjectTile.h" },
+	};
+	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_ValidNeighboursS_MetaData[] = {
+		{ "Category", "ObjectTile" },
+		{ "ModuleRelativePath", "Public/WFC/ObjectTile.h" },
+	};
+	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_ValidNeighboursW_MetaData[] = {
+		{ "Category", "ObjectTile" },
+		{ "ModuleRelativePath", "Public/WFC/ObjectTile.h" },
+	};
+	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_ValidNeighboursE_MetaData[] = {
 		{ "Category", "ObjectTile" },
 		{ "ModuleRelativePath", "Public/WFC/ObjectTile.h" },
 	};
@@ -51,14 +64,28 @@ struct Z_Construct_UClass_UObjectTile_Statics
 		{ "Category", "ObjectTile" },
 		{ "ModuleRelativePath", "Public/WFC/ObjectTile.h" },
 	};
+	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_StaticMesh_MetaData[] = {
+		{ "Category", "ObjectTile" },
+		{ "ModuleRelativePath", "Public/WFC/ObjectTile.h" },
+	};
 #endif // WITH_METADATA
-	static const UECodeGen_Private::FClassPropertyParams NewProp_ValidNeighbours_ValueProp;
-	static const UECodeGen_Private::FIntPropertyParams NewProp_ValidNeighbours_Key_KeyProp;
-	static const UECodeGen_Private::FMapPropertyParams NewProp_ValidNeighbours;
+	static const UECodeGen_Private::FClassPropertyParams NewProp_ValidNeighboursN_ValueProp;
+	static const UECodeGen_Private::FIntPropertyParams NewProp_ValidNeighboursN_Key_KeyProp;
+	static const UECodeGen_Private::FMapPropertyParams NewProp_ValidNeighboursN;
+	static const UECodeGen_Private::FClassPropertyParams NewProp_ValidNeighboursS_ValueProp;
+	static const UECodeGen_Private::FIntPropertyParams NewProp_ValidNeighboursS_Key_KeyProp;
+	static const UECodeGen_Private::FMapPropertyParams NewProp_ValidNeighboursS;
+	static const UECodeGen_Private::FClassPropertyParams NewProp_ValidNeighboursW_ValueProp;
+	static const UECodeGen_Private::FIntPropertyParams NewProp_ValidNeighboursW_Key_KeyProp;
+	static const UECodeGen_Private::FMapPropertyParams NewProp_ValidNeighboursW;
+	static const UECodeGen_Private::FClassPropertyParams NewProp_ValidNeighboursE_ValueProp;
+	static const UECodeGen_Private::FIntPropertyParams NewProp_ValidNeighboursE_Key_KeyProp;
+	static const UECodeGen_Private::FMapPropertyParams NewProp_ValidNeighboursE;
 	static const UECodeGen_Private::FClassPropertyParams NewProp_ValidTiles_ValueProp;
 	static const UECodeGen_Private::FIntPropertyParams NewProp_ValidTiles_Key_KeyProp;
 	static const UECodeGen_Private::FMapPropertyParams NewProp_ValidTiles;
 	static const UECodeGen_Private::FObjectPropertyParams NewProp_MaterialInterface;
+	static const UECodeGen_Private::FObjectPropertyParams NewProp_StaticMesh;
 	static const UECodeGen_Private::FPropertyParamsBase* const PropPointers[];
 	static UObject* (*const DependentSingletons[])();
 	static constexpr FCppClassTypeInfoStatic StaticCppClassTypeInfo = {
@@ -66,21 +93,41 @@ struct Z_Construct_UClass_UObjectTile_Statics
 	};
 	static const UECodeGen_Private::FClassParams ClassParams;
 };
-const UECodeGen_Private::FClassPropertyParams Z_Construct_UClass_UObjectTile_Statics::NewProp_ValidNeighbours_ValueProp = { "ValidNeighbours", nullptr, (EPropertyFlags)0x0004000000000001, UECodeGen_Private::EPropertyGenFlags::Class, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, 1, Z_Construct_UClass_UClass, Z_Construct_UClass_UObjectTile_NoRegister, METADATA_PARAMS(0, nullptr) };
-const UECodeGen_Private::FIntPropertyParams Z_Construct_UClass_UObjectTile_Statics::NewProp_ValidNeighbours_Key_KeyProp = { "ValidNeighbours_Key", nullptr, (EPropertyFlags)0x0000000000000001, UECodeGen_Private::EPropertyGenFlags::Int, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, 0, METADATA_PARAMS(0, nullptr) };
-const UECodeGen_Private::FMapPropertyParams Z_Construct_UClass_UObjectTile_Statics::NewProp_ValidNeighbours = { "ValidNeighbours", nullptr, (EPropertyFlags)0x0014000000000005, UECodeGen_Private::EPropertyGenFlags::Map, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(UObjectTile, ValidNeighbours), EMapPropertyFlags::None, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_ValidNeighbours_MetaData), NewProp_ValidNeighbours_MetaData) };
+const UECodeGen_Private::FClassPropertyParams Z_Construct_UClass_UObjectTile_Statics::NewProp_ValidNeighboursN_ValueProp = { "ValidNeighboursN", nullptr, (EPropertyFlags)0x0004000000000001, UECodeGen_Private::EPropertyGenFlags::Class, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, 1, Z_Construct_UClass_UClass, Z_Construct_UClass_UObjectTile_NoRegister, METADATA_PARAMS(0, nullptr) };
+const UECodeGen_Private::FIntPropertyParams Z_Construct_UClass_UObjectTile_Statics::NewProp_ValidNeighboursN_Key_KeyProp = { "ValidNeighboursN_Key", nullptr, (EPropertyFlags)0x0000000000000001, UECodeGen_Private::EPropertyGenFlags::Int, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, 0, METADATA_PARAMS(0, nullptr) };
+const UECodeGen_Private::FMapPropertyParams Z_Construct_UClass_UObjectTile_Statics::NewProp_ValidNeighboursN = { "ValidNeighboursN", nullptr, (EPropertyFlags)0x0014000000000005, UECodeGen_Private::EPropertyGenFlags::Map, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(UObjectTile, ValidNeighboursN), EMapPropertyFlags::None, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_ValidNeighboursN_MetaData), NewProp_ValidNeighboursN_MetaData) };
+const UECodeGen_Private::FClassPropertyParams Z_Construct_UClass_UObjectTile_Statics::NewProp_ValidNeighboursS_ValueProp = { "ValidNeighboursS", nullptr, (EPropertyFlags)0x0004000000000001, UECodeGen_Private::EPropertyGenFlags::Class, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, 1, Z_Construct_UClass_UClass, Z_Construct_UClass_UObjectTile_NoRegister, METADATA_PARAMS(0, nullptr) };
+const UECodeGen_Private::FIntPropertyParams Z_Construct_UClass_UObjectTile_Statics::NewProp_ValidNeighboursS_Key_KeyProp = { "ValidNeighboursS_Key", nullptr, (EPropertyFlags)0x0000000000000001, UECodeGen_Private::EPropertyGenFlags::Int, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, 0, METADATA_PARAMS(0, nullptr) };
+const UECodeGen_Private::FMapPropertyParams Z_Construct_UClass_UObjectTile_Statics::NewProp_ValidNeighboursS = { "ValidNeighboursS", nullptr, (EPropertyFlags)0x0014000000000005, UECodeGen_Private::EPropertyGenFlags::Map, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(UObjectTile, ValidNeighboursS), EMapPropertyFlags::None, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_ValidNeighboursS_MetaData), NewProp_ValidNeighboursS_MetaData) };
+const UECodeGen_Private::FClassPropertyParams Z_Construct_UClass_UObjectTile_Statics::NewProp_ValidNeighboursW_ValueProp = { "ValidNeighboursW", nullptr, (EPropertyFlags)0x0004000000000001, UECodeGen_Private::EPropertyGenFlags::Class, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, 1, Z_Construct_UClass_UClass, Z_Construct_UClass_UObjectTile_NoRegister, METADATA_PARAMS(0, nullptr) };
+const UECodeGen_Private::FIntPropertyParams Z_Construct_UClass_UObjectTile_Statics::NewProp_ValidNeighboursW_Key_KeyProp = { "ValidNeighboursW_Key", nullptr, (EPropertyFlags)0x0000000000000001, UECodeGen_Private::EPropertyGenFlags::Int, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, 0, METADATA_PARAMS(0, nullptr) };
+const UECodeGen_Private::FMapPropertyParams Z_Construct_UClass_UObjectTile_Statics::NewProp_ValidNeighboursW = { "ValidNeighboursW", nullptr, (EPropertyFlags)0x0014000000000005, UECodeGen_Private::EPropertyGenFlags::Map, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(UObjectTile, ValidNeighboursW), EMapPropertyFlags::None, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_ValidNeighboursW_MetaData), NewProp_ValidNeighboursW_MetaData) };
+const UECodeGen_Private::FClassPropertyParams Z_Construct_UClass_UObjectTile_Statics::NewProp_ValidNeighboursE_ValueProp = { "ValidNeighboursE", nullptr, (EPropertyFlags)0x0004000000000001, UECodeGen_Private::EPropertyGenFlags::Class, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, 1, Z_Construct_UClass_UClass, Z_Construct_UClass_UObjectTile_NoRegister, METADATA_PARAMS(0, nullptr) };
+const UECodeGen_Private::FIntPropertyParams Z_Construct_UClass_UObjectTile_Statics::NewProp_ValidNeighboursE_Key_KeyProp = { "ValidNeighboursE_Key", nullptr, (EPropertyFlags)0x0000000000000001, UECodeGen_Private::EPropertyGenFlags::Int, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, 0, METADATA_PARAMS(0, nullptr) };
+const UECodeGen_Private::FMapPropertyParams Z_Construct_UClass_UObjectTile_Statics::NewProp_ValidNeighboursE = { "ValidNeighboursE", nullptr, (EPropertyFlags)0x0014000000000005, UECodeGen_Private::EPropertyGenFlags::Map, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(UObjectTile, ValidNeighboursE), EMapPropertyFlags::None, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_ValidNeighboursE_MetaData), NewProp_ValidNeighboursE_MetaData) };
 const UECodeGen_Private::FClassPropertyParams Z_Construct_UClass_UObjectTile_Statics::NewProp_ValidTiles_ValueProp = { "ValidTiles", nullptr, (EPropertyFlags)0x0004000000000001, UECodeGen_Private::EPropertyGenFlags::Class, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, 1, Z_Construct_UClass_UClass, Z_Construct_UClass_UObjectTile_NoRegister, METADATA_PARAMS(0, nullptr) };
 const UECodeGen_Private::FIntPropertyParams Z_Construct_UClass_UObjectTile_Statics::NewProp_ValidTiles_Key_KeyProp = { "ValidTiles_Key", nullptr, (EPropertyFlags)0x0000000000000001, UECodeGen_Private::EPropertyGenFlags::Int, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, 0, METADATA_PARAMS(0, nullptr) };
 const UECodeGen_Private::FMapPropertyParams Z_Construct_UClass_UObjectTile_Statics::NewProp_ValidTiles = { "ValidTiles", nullptr, (EPropertyFlags)0x0014000000000005, UECodeGen_Private::EPropertyGenFlags::Map, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(UObjectTile, ValidTiles), EMapPropertyFlags::None, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_ValidTiles_MetaData), NewProp_ValidTiles_MetaData) };
 const UECodeGen_Private::FObjectPropertyParams Z_Construct_UClass_UObjectTile_Statics::NewProp_MaterialInterface = { "MaterialInterface", nullptr, (EPropertyFlags)0x0010000000000005, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(UObjectTile, MaterialInterface), Z_Construct_UClass_UMaterialInterface_NoRegister, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_MaterialInterface_MetaData), NewProp_MaterialInterface_MetaData) };
+const UECodeGen_Private::FObjectPropertyParams Z_Construct_UClass_UObjectTile_Statics::NewProp_StaticMesh = { "StaticMesh", nullptr, (EPropertyFlags)0x0010000000000005, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(UObjectTile, StaticMesh), Z_Construct_UClass_UStaticMesh_NoRegister, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_StaticMesh_MetaData), NewProp_StaticMesh_MetaData) };
 const UECodeGen_Private::FPropertyParamsBase* const Z_Construct_UClass_UObjectTile_Statics::PropPointers[] = {
-	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_UObjectTile_Statics::NewProp_ValidNeighbours_ValueProp,
-	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_UObjectTile_Statics::NewProp_ValidNeighbours_Key_KeyProp,
-	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_UObjectTile_Statics::NewProp_ValidNeighbours,
+	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_UObjectTile_Statics::NewProp_ValidNeighboursN_ValueProp,
+	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_UObjectTile_Statics::NewProp_ValidNeighboursN_Key_KeyProp,
+	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_UObjectTile_Statics::NewProp_ValidNeighboursN,
+	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_UObjectTile_Statics::NewProp_ValidNeighboursS_ValueProp,
+	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_UObjectTile_Statics::NewProp_ValidNeighboursS_Key_KeyProp,
+	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_UObjectTile_Statics::NewProp_ValidNeighboursS,
+	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_UObjectTile_Statics::NewProp_ValidNeighboursW_ValueProp,
+	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_UObjectTile_Statics::NewProp_ValidNeighboursW_Key_KeyProp,
+	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_UObjectTile_Statics::NewProp_ValidNeighboursW,
+	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_UObjectTile_Statics::NewProp_ValidNeighboursE_ValueProp,
+	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_UObjectTile_Statics::NewProp_ValidNeighboursE_Key_KeyProp,
+	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_UObjectTile_Statics::NewProp_ValidNeighboursE,
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_UObjectTile_Statics::NewProp_ValidTiles_ValueProp,
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_UObjectTile_Statics::NewProp_ValidTiles_Key_KeyProp,
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_UObjectTile_Statics::NewProp_ValidTiles,
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_UObjectTile_Statics::NewProp_MaterialInterface,
+	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_UObjectTile_Statics::NewProp_StaticMesh,
 };
 static_assert(UE_ARRAY_COUNT(Z_Construct_UClass_UObjectTile_Statics::PropPointers) < 2048);
 UObject* (*const Z_Construct_UClass_UObjectTile_Statics::DependentSingletons[])() = {
@@ -124,10 +171,10 @@ UObjectTile::~UObjectTile() {}
 struct Z_CompiledInDeferFile_FID_TCC_TCCzin_Source_TCCzin_Public_WFC_ObjectTile_h_Statics
 {
 	static constexpr FClassRegisterCompiledInInfo ClassInfo[] = {
-		{ Z_Construct_UClass_UObjectTile, UObjectTile::StaticClass, TEXT("UObjectTile"), &Z_Registration_Info_UClass_UObjectTile, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(UObjectTile), 2192830074U) },
+		{ Z_Construct_UClass_UObjectTile, UObjectTile::StaticClass, TEXT("UObjectTile"), &Z_Registration_Info_UClass_UObjectTile, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(UObjectTile), 1924695875U) },
 	};
 };
-static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_TCC_TCCzin_Source_TCCzin_Public_WFC_ObjectTile_h_762898953(TEXT("/Script/TCCzin"),
+static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_TCC_TCCzin_Source_TCCzin_Public_WFC_ObjectTile_h_206239146(TEXT("/Script/TCCzin"),
 	Z_CompiledInDeferFile_FID_TCC_TCCzin_Source_TCCzin_Public_WFC_ObjectTile_h_Statics::ClassInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_TCC_TCCzin_Source_TCCzin_Public_WFC_ObjectTile_h_Statics::ClassInfo),
 	nullptr, 0,
 	nullptr, 0);

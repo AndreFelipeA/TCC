@@ -7,11 +7,17 @@
 ATile::ATile(void)
 {
 
+	RootComponent = CreateDefaultSubobject<USceneComponent>("RootComponent");
+	
 	StaticMeshComponent = CreateDefaultSubobject<UStaticMeshComponent>("StaticMeshComponent");
 	StaticMeshComponent->SetupAttachment(RootComponent);
 	
 	UStaticMesh* cubeMesh = ConstructorHelpers::FObjectFinder<UStaticMesh>(TEXT("StaticMesh'/Engine/BasicShapes/Cube.Cube'")).Object;
-	StaticMeshComponent->SetStaticMesh(cubeMesh);
+	StaticMeshComponent->SetStaticMesh(StaticMesh);
+	FVector Scale = [] { return FVector(10, 10, 10); }();
+	
+	StaticMeshComponent->SetRelativeScale3D(Scale);
+	StaticMeshComponent->SetMaterial(0, MaterialInterface);
 	
 }
 
@@ -19,5 +25,13 @@ ATile::ATile(void)
 void ATile::BeginPlay()
 {
 	Super::BeginPlay();
+	StaticMeshComponent->SetMaterial(0, MaterialInterface);
+	FVector Scale = [] { return FVector(10, 10, 10); }();
 	
+	StaticMeshComponent->SetRelativeScale3D(Scale);
+	
+	StaticMeshComponent->SetStaticMesh(StaticMesh);
+	// UE_LOG(LogClass, Log, TEXT("Material: %s"), *FString(MaterialInterface->GetName()));
+	
+	StaticMeshComponent->bForceDisableNanite = true;
 }

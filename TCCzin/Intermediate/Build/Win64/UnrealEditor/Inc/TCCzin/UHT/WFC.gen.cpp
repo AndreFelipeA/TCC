@@ -217,14 +217,36 @@ UScriptStruct* Z_Construct_UScriptStruct_FMatrixObject()
 // Begin Class UWFC Function WFC
 struct Z_Construct_UFunction_UWFC_WFC_Statics
 {
+	struct WFC_eventWFC_Parms
+	{
+		int32 Width;
+		int32 Height;
+	};
 #if WITH_METADATA
 	static constexpr UECodeGen_Private::FMetaDataPairParam Function_MetaDataParams[] = {
+#if !UE_BUILD_SHIPPING
+		{ "Comment", "// TArray<FMatrixObject>\n" },
+#endif
 		{ "ModuleRelativePath", "Public/WFC/WFC.h" },
+#if !UE_BUILD_SHIPPING
+		{ "ToolTip", "TArray<FMatrixObject>" },
+#endif
 	};
 #endif // WITH_METADATA
+	static const UECodeGen_Private::FIntPropertyParams NewProp_Width;
+	static const UECodeGen_Private::FIntPropertyParams NewProp_Height;
+	static const UECodeGen_Private::FPropertyParamsBase* const PropPointers[];
 	static const UECodeGen_Private::FFunctionParams FuncParams;
 };
-const UECodeGen_Private::FFunctionParams Z_Construct_UFunction_UWFC_WFC_Statics::FuncParams = { (UObject*(*)())Z_Construct_UClass_UWFC, nullptr, "WFC", nullptr, nullptr, nullptr, 0, 0, RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x04020401, 0, 0, METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UFunction_UWFC_WFC_Statics::Function_MetaDataParams), Z_Construct_UFunction_UWFC_WFC_Statics::Function_MetaDataParams) };
+const UECodeGen_Private::FIntPropertyParams Z_Construct_UFunction_UWFC_WFC_Statics::NewProp_Width = { "Width", nullptr, (EPropertyFlags)0x0010000000000080, UECodeGen_Private::EPropertyGenFlags::Int, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(WFC_eventWFC_Parms, Width), METADATA_PARAMS(0, nullptr) };
+const UECodeGen_Private::FIntPropertyParams Z_Construct_UFunction_UWFC_WFC_Statics::NewProp_Height = { "Height", nullptr, (EPropertyFlags)0x0010000000000080, UECodeGen_Private::EPropertyGenFlags::Int, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(WFC_eventWFC_Parms, Height), METADATA_PARAMS(0, nullptr) };
+const UECodeGen_Private::FPropertyParamsBase* const Z_Construct_UFunction_UWFC_WFC_Statics::PropPointers[] = {
+	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UFunction_UWFC_WFC_Statics::NewProp_Width,
+	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UFunction_UWFC_WFC_Statics::NewProp_Height,
+};
+static_assert(UE_ARRAY_COUNT(Z_Construct_UFunction_UWFC_WFC_Statics::PropPointers) < 2048);
+const UECodeGen_Private::FFunctionParams Z_Construct_UFunction_UWFC_WFC_Statics::FuncParams = { (UObject*(*)())Z_Construct_UClass_UWFC, nullptr, "WFC", nullptr, nullptr, Z_Construct_UFunction_UWFC_WFC_Statics::PropPointers, UE_ARRAY_COUNT(Z_Construct_UFunction_UWFC_WFC_Statics::PropPointers), sizeof(Z_Construct_UFunction_UWFC_WFC_Statics::WFC_eventWFC_Parms), RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x04020401, 0, 0, METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UFunction_UWFC_WFC_Statics::Function_MetaDataParams), Z_Construct_UFunction_UWFC_WFC_Statics::Function_MetaDataParams) };
+static_assert(sizeof(Z_Construct_UFunction_UWFC_WFC_Statics::WFC_eventWFC_Parms) < MAX_uint16);
 UFunction* Z_Construct_UFunction_UWFC_WFC()
 {
 	static UFunction* ReturnFunction = nullptr;
@@ -236,9 +258,11 @@ UFunction* Z_Construct_UFunction_UWFC_WFC()
 }
 DEFINE_FUNCTION(UWFC::execWFC)
 {
+	P_GET_PROPERTY(FIntProperty,Z_Param_Width);
+	P_GET_PROPERTY(FIntProperty,Z_Param_Height);
 	P_FINISH;
 	P_NATIVE_BEGIN;
-	P_THIS->WFC();
+	P_THIS->WFC(Z_Param_Width,Z_Param_Height);
 	P_NATIVE_END;
 }
 // End Class UWFC Function WFC
@@ -290,7 +314,7 @@ struct Z_Construct_UClass_UWFC_Statics
 	static const UECodeGen_Private::FPropertyParamsBase* const PropPointers[];
 	static UObject* (*const DependentSingletons[])();
 	static constexpr FClassFunctionLinkInfo FuncInfo[] = {
-		{ &Z_Construct_UFunction_UWFC_WFC, "WFC" }, // 1319752818
+		{ &Z_Construct_UFunction_UWFC_WFC, "WFC" }, // 2764519656
 	};
 	static_assert(UE_ARRAY_COUNT(FuncInfo) < 2048);
 	static constexpr FCppClassTypeInfoStatic StaticCppClassTypeInfo = {
@@ -356,10 +380,10 @@ struct Z_CompiledInDeferFile_FID_TCC_TCCzin_Source_TCCzin_Public_WFC_WFC_h_Stati
 		{ FMatrixObject::StaticStruct, Z_Construct_UScriptStruct_FMatrixObject_Statics::NewStructOps, TEXT("MatrixObject"), &Z_Registration_Info_UScriptStruct_MatrixObject, CONSTRUCT_RELOAD_VERSION_INFO(FStructReloadVersionInfo, sizeof(FMatrixObject), 553631897U) },
 	};
 	static constexpr FClassRegisterCompiledInInfo ClassInfo[] = {
-		{ Z_Construct_UClass_UWFC, UWFC::StaticClass, TEXT("UWFC"), &Z_Registration_Info_UClass_UWFC, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(UWFC), 3227081098U) },
+		{ Z_Construct_UClass_UWFC, UWFC::StaticClass, TEXT("UWFC"), &Z_Registration_Info_UClass_UWFC, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(UWFC), 3829536261U) },
 	};
 };
-static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_TCC_TCCzin_Source_TCCzin_Public_WFC_WFC_h_560752852(TEXT("/Script/TCCzin"),
+static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_TCC_TCCzin_Source_TCCzin_Public_WFC_WFC_h_3471570764(TEXT("/Script/TCCzin"),
 	Z_CompiledInDeferFile_FID_TCC_TCCzin_Source_TCCzin_Public_WFC_WFC_h_Statics::ClassInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_TCC_TCCzin_Source_TCCzin_Public_WFC_WFC_h_Statics::ClassInfo),
 	Z_CompiledInDeferFile_FID_TCC_TCCzin_Source_TCCzin_Public_WFC_WFC_h_Statics::ScriptStructInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_TCC_TCCzin_Source_TCCzin_Public_WFC_WFC_h_Statics::ScriptStructInfo),
 	nullptr, 0);

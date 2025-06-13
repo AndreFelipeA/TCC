@@ -1,0 +1,65 @@
+// Fill out your copyright notice in the Description page of Project Settings.
+
+
+#include "NWFC.h"
+#include "WFC/ObjectTile.h"
+#include "WFC/WFC.h"
+UNWFC::UNWFC()
+{
+	wfc = NewObject<UWFC>(UWFC::StaticClass());
+}
+
+void UNWFC::NestedWFC()
+{
+	// for (int i = 0; i < Width; i++)
+	// {
+	// 	for (int j = 0; j < Height; j++)
+	// 	{
+	// 		if (j == i)
+	// 		{
+	// 			TArray<FMatrixObject> G = wfc->WFC(C,C);
+	// 			OutputWFC(G);
+	// 			if (i-1 >= 0 || j-1 >= 0)
+	// 			{
+	// 				
+	// 				
+	// 			}
+	// 			
+	// 		}
+	// 	}
+	// }
+}
+
+void UNWFC::OutputWFC(TArray<FMatrixObject>& G)
+{
+	UE_LOG(LogClass, Log, TEXT("---------NESTED WFC--------------------"));
+	
+	for (int i = 0; i < C; i++)
+	{
+		for (int j = 0; j < C; j++)
+		{
+			const TObjectPtr<UObjectTile> Tile = G[i][j];
+			FString string;
+			FString stringNeighbour;
+			for (auto it = Tile->ValidTiles.CreateConstIterator(); it; ++it)
+			{
+				string += it.Value()->GetName();
+			}
+			for (auto it = Tile->ValidNeighbours.CreateConstIterator(); it; ++it)
+			{
+				stringNeighbour += it.Value()->GetName();
+			}
+			if (Tile->MaterialInterface != nullptr)
+			{
+				
+				UE_LOG(LogClass, Log, TEXT("pos %d:%d, Cor:%s Neighbours:%s,  Valid tiles %s"), i,j, *Tile->MaterialInterface->GetName() , *stringNeighbour, *string);
+			}
+			else
+			{
+				UE_LOG(LogClass, Log, TEXT("pos %d:%d, Neighbours:%s,  Valid tiles %s"), i,j , *stringNeighbour, *string);
+			}
+		}
+	}
+}
+
+

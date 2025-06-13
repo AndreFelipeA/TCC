@@ -42,6 +42,9 @@
     <Filter Include="Source\TCCzin\Private">
       <UniqueIdentifier>{8874CB14-DDCE-36A6-B210-5A5F8C2D636D}</UniqueIdentifier>
     </Filter>
+    <ClCompile Include="..\..\Source\TCCzin\Private\NWFC.cpp">
+      <Filter>Source\TCCzin\Private</Filter>
+    </ClCompile>
     <Filter Include="Source\TCCzin\Private\WFC">
       <UniqueIdentifier>{7ECB3080-644B-344A-B9E5-A1985F68960D}</UniqueIdentifier>
     </Filter>
@@ -54,9 +57,15 @@
     <ClCompile Include="..\..\Source\TCCzin\Private\WFC\WFC.cpp">
       <Filter>Source\TCCzin\Private\WFC</Filter>
     </ClCompile>
+    <None Include="..\..\Source\TCCzin\Private\WFC\WFC.cpp~">
+      <Filter>Source\TCCzin\Private\WFC</Filter>
+    </None>
     <Filter Include="Source\TCCzin\Public">
       <UniqueIdentifier>{C86538E0-D8F7-325D-9D38-5452F2F51A6E}</UniqueIdentifier>
     </Filter>
+    <ClCompile Include="..\..\Source\TCCzin\Public\NWFC.h">
+      <Filter>Source\TCCzin\Public</Filter>
+    </ClCompile>
     <Filter Include="Source\TCCzin\Public\WFC">
       <UniqueIdentifier>{7F78864C-9C44-346C-B408-F607CDF2DB31}</UniqueIdentifier>
     </Filter>
@@ -69,5 +78,8 @@
     <ClCompile Include="..\..\Source\TCCzin\Public\WFC\WFC.h">
       <Filter>Source\TCCzin\Public\WFC</Filter>
     </ClCompile>
+    <None Include="..\..\Source\TCCzin\Public\WFC\WFC.h~">
+      <Filter>Source\TCCzin\Public\WFC</Filter>
+    </None>
   </ItemGroup>
 </Project>

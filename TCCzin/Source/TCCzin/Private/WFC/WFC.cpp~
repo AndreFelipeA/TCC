@@ -58,20 +58,25 @@ void UWFC::WFC(const int32 width,const int32 height)
 		{
 			UE_LOG(LogClass, Log, TEXT("---------------- DEU MERDA -----------------"));
 
-			return;
+			break;
 		}
 		else if (result == Success)
 		{
 			UE_LOG(LogClass, Log, TEXT("---------------- TERMINOU -----------------"));
+			// print();
 			WaveToOutput();
 			return;
 		}
 		
-		AC3();
-		// print();
-
+		if (AC3() == false)
+		{
+			UE_LOG(LogClass, Log, TEXT("---------------- DEU MERDA BACKTRACKING -----------------"));
+		}
 		
+
 	}
+	// print();
+	return;
 	
 }
 
@@ -103,7 +108,6 @@ EObserveStatus UWFC::Observe()
 
 	if (Argmin == 0)
 	{
-		WaveToOutput();
 		return Success;
 	}
 	
@@ -114,19 +118,27 @@ EObserveStatus UWFC::Observe()
 	int x = Wave.Get<0>();
 	int y = Wave.Get<1>();
 	MBool[x][y] = false;
-	UE_LOG(LogClass, Log, TEXT("Escolhi: %d,%d"), x, y);
+	// UE_LOG(LogClass, Log, TEXT("Escolhi: %d,%d"), x, y);
 	
 
 	TSubclassOf<UObjectTile> tile = GetRandomTile();
 	if (tile != nullptr)
 	{
-		Grid[x][y]->ValidNeighbours = tile.GetDefaultObject()->ValidNeighbours;
+		Grid[x][y]->ValidNeighboursN = tile.GetDefaultObject()->ValidNeighboursN;
+		Grid[x][y]->ValidNeighboursS = tile.GetDefaultObject()->ValidNeighboursS;
+		Grid[x][y]->ValidNeighboursW = tile.GetDefaultObject()->ValidNeighboursW;
+		Grid[x][y]->ValidNeighboursE = tile.GetDefaultObject()->ValidNeighboursE;
+		if (tile.GetDefaultObject()->StaticMesh != nullptr)
+		{
+			UE_LOG(LogClass, Log, TEXT("veio null essa merda"));
+		}
+		Grid[x][y]->StaticMesh = tile.GetDefaultObject()->StaticMesh;
 		Grid[x][y]->MaterialInterface = tile.GetDefaultObject()->MaterialInterface;
 		
 	}
 	else
 	{
-		// UE_LOG(LogClass, Log, TEXT("Escolhi: %d,%d e veio null"), x, y);
+		UE_LOG(LogClass, Log, TEXT("Escolhi: %d,%d e veio null"), x, y);
 
 	}
 
@@ -167,7 +179,7 @@ int UWFC::Mrv()
 }
 
 
-void UWFC::AC3()
+bool UWFC::AC3()
 {
 		while (!Queue.IsEmpty())
     	{
@@ -186,18 +198,50 @@ void UWFC::AC3()
     		{
     			TArray<int> TilesToRemove;
 
+
     			if (MBool[x][y] == false)
     			{
     				if (x + Directions_x[i] >= 0 && x + Directions_x[i] < Width && y + Directions_y[i] >= 0 && y + Directions_y[i] < Height && MBool[x + Directions_x[i]][y + Directions_y[i]] == true)
     				{
     					// UE_LOG(LogClass, Log, TEXT("AC3 : %d,%d"), x+Directions_x[i], y+Directions_y[i]);
 
+    					
+
     					for (auto it = Grid[x+Directions_x[i]][y+Directions_y[i]]->ValidTiles.CreateConstIterator(); it; ++it)
     					{
-    						if (!Grid[x][y]->ValidNeighbours.Find(it.Key()))
+    						if (i == 0)
     						{
-    							TilesToRemove.Add(it.Key());
+    							if (!Grid[x][y]->ValidNeighboursS.Find(it.Key()))
+    							{
+    								TilesToRemove.Add(it.Key());
+    							}
+    							
     						}
+    						if (i == 1)
+    						{
+    							if (!Grid[x][y]->ValidNeighboursN.Find(it.Key()))
+    							{
+    								TilesToRemove.Add(it.Key());
+    							}
+    							
+    						}
+    						if (i == 2)
+    						{
+    							if (!Grid[x][y]->ValidNeighboursE.Find(it.Key()))
+    							{
+    								TilesToRemove.Add(it.Key());
+    							}
+    							
+    						}
+    						if (i == 3)
+    						{
+    							if (!Grid[x][y]->ValidNeighboursW.Find(it.Key()))
+    							{
+    								TilesToRemove.Add(it.Key());
+    							}
+    							
+    						}
+    						
     					}
     				}
     			}
@@ -213,12 +257,39 @@ void UWFC::AC3()
 			    			for (auto it2 = Grid[x][y]->ValidTiles.CreateConstIterator(); it2; ++it2)
 			    			{
 			    				// UE_LOG(LogClass, Log, TEXT("Comparando: %s com :%s"), *it.Value()->GetDefaultObject()->GetName(), *it2.Value().GetDefaultObject()->GetName());
-
-			    				if (!it2.Value().GetDefaultObject()->ValidNeighbours.Find(it.Key()))
-			    				{
+								if (i == 0)
+								{
+									if (!it2.Value().GetDefaultObject()->ValidNeighboursS.Find(it.Key()))
+									{
 			    					
-			    					TilesToRemove.Add(it.Key());
+										TilesToRemove.Add(it.Key());
+									}
+								}
+			    				if (i == 1)
+			    				{
+			    					if (!it2.Value().GetDefaultObject()->ValidNeighboursN.Find(it.Key()))
+			    					{
+			    					
+			    						TilesToRemove.Add(it.Key());
+			    					}
 			    				}
+			    				if (i == 2)
+			    				{
+			    					if (!it2.Value().GetDefaultObject()->ValidNeighboursE.Find(it.Key()))
+			    					{
+			    					
+			    						TilesToRemove.Add(it.Key());
+			    					}
+			    				}
+			    				if (i == 3)
+			    				{
+			    					if (!it2.Value().GetDefaultObject()->ValidNeighboursW.Find(it.Key()))
+			    					{
+			    					
+			    						TilesToRemove.Add(it.Key());
+			    					}
+			    				}
+
 			    			}
 			    		}
 			    	}
@@ -235,17 +306,28 @@ void UWFC::AC3()
     				}
 
     				Queue.PushLast(TTuple<int,int> (x+Directions_x[i],y+Directions_y[i]));
+
+    				if (Grid[x+Directions_x[i]][y+Directions_y[i]]->ValidTiles.Num() == 0)
+    				{
+    					return false;
+    				}
     			}
 
     			TilesToRemove.Empty();
+
+
     			
     		}
     			
     	}
+
+	return true;
 }
 
 void UWFC::print()
 {
+	UE_LOG(LogClass, Log, TEXT("---------WFC--------------------"));
+	
 	for (int i = 0; i < Width; ++i)
 	{
 		for (int j  = 0; j < Height; j++)
@@ -257,10 +339,10 @@ void UWFC::print()
 			{
 				string += it.Value()->GetName();
 			}
-			for (auto it = Tile->ValidNeighbours.CreateConstIterator(); it; ++it)
-			{
-				stringNeighbour += it.Value()->GetName();
-			}
+			// for (auto it = Tile->ValidNeighbours.CreateConstIterator(); it; ++it)
+			// {
+			// 	stringNeighbour += it.Value()->GetName();
+			// }
 			if (Tile->MaterialInterface != nullptr)
 			{
 				
@@ -281,6 +363,7 @@ void UWFC::WaveToOutput()
 {
 	for (int i = 0; i < Width; i++)
 	{
+		
 		for (int j = 0; j < Height; j++)
 		{
 			const FVector SpawnLocation = FVector(i*(10*10), j*(10*10), 0.0f);
@@ -290,11 +373,19 @@ void UWFC::WaveToOutput()
 			
 			ATile* SpawntTile = GetWorld()->SpawnActor<ATile>(ATile::StaticClass(), SpawnLocation, SpawnRotation, SpawnInfo);
 			SpawntTile->MaterialInterface = Grid[i][j]->MaterialInterface;
-			SpawntTile->StaticMeshComponent->SetMaterial(0, SpawntTile->MaterialInterface);
+			SpawntTile->StaticMeshComponent->SetMaterial(0, Grid[i][j]->MaterialInterface);
 
 			
 		}
+		
 	}
+
+	for (int i = 0; i < Width; i++)
+	{
+		Grid[i].M.Empty();
+		MBool[i].M.Empty();
+	}
+
 }
 
 TSubclassOf<UObjectTile> UWFC::GetRandomTile()
@@ -303,6 +394,8 @@ TSubclassOf<UObjectTile> UWFC::GetRandomTile()
 	int y = Wave.Get<1>();
 	int rand =  FMath::RandRange(0, Grid[x][y]->ValidTiles.Num() - 1);
 	int i = 0;
+
+	UE_LOG(LogClass, Log, TEXT("Random Tile: x:%d, y:%d, rand:%d, numTiles: %d"), x, y, rand, Grid[i][y]->ValidTiles.Num());
 
 	for (auto it = Grid[x][y]->ValidTiles.CreateConstIterator(); it; ++it)
 	{

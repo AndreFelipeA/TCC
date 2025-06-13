@@ -16,12 +16,28 @@ class TCCZIN_API UObjectTile : public UObject
 public:
 	
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-	TMap<int, TSubclassOf<UObjectTile>> ValidNeighbours;
+	TMap<int, TSubclassOf<UObjectTile>> ValidNeighboursN;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	TMap<int, TSubclassOf<UObjectTile>> ValidNeighboursS;
+
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	TMap<int, TSubclassOf<UObjectTile>> ValidNeighboursW;
+
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	TMap<int, TSubclassOf<UObjectTile>> ValidNeighboursE;
+
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	TMap<int, TSubclassOf<UObjectTile>> ValidTiles;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	UMaterialInterface *MaterialInterface;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	UStaticMesh* StaticMesh;
+	
 	
 };

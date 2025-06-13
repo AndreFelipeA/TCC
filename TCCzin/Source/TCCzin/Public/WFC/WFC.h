@@ -41,21 +41,21 @@ public:
 	}
 };
 
-	USTRUCT()
-	struct FMatrixObject
-	{
-		GENERATED_BODY()
-	public:
+USTRUCT()
+struct FMatrixObject
+{
+	GENERATED_BODY()
+public:
 
-		UPROPERTY(EditAnywhere)
-		TArray<TObjectPtr<UObjectTile>> M;
-		TObjectPtr<UObjectTile>& operator[] (const int32 i) { return M[i]; }
-		
-		void Add(TObjectPtr<UObjectTile> Tile)
-		{
-			M.Add(*Tile);
-		}
-	};
+	UPROPERTY(EditAnywhere)
+	TArray<TObjectPtr<UObjectTile>> M;
+	TObjectPtr<UObjectTile>& operator[] (const int32 i) { return M[i]; }
+	
+	void Add(TObjectPtr<UObjectTile> Tile)
+	{
+		M.Add(*Tile);
+	}
+};
 
 enum EObserveStatus
 {
@@ -76,8 +76,9 @@ class TCCZIN_API UWFC : public UObject
 public:
 	UWFC();
 
+	// TArray<FMatrixObject>
 	UFUNCTION(BlueprintCallable)
-	void WFC(int32 Width, int32 Height);
+	 void WFC(int32 Width, int32 Height);
 
 	TSubclassOf<UObjectTile> GetRandomTile();	
 protected:
@@ -113,7 +114,7 @@ protected:
 	
 	void WaveToOutput();
 
-	void AC3();
+	bool AC3();
 
 	void print();
 	
