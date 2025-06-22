@@ -16,18 +16,18 @@ class TCCZIN_API UObjectTile : public UObject
 public:
 	
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-	TMap<int, TSubclassOf<UObjectTile>> ValidNeighboursN;
+	TArray<FString> ValidNeighboursN;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-	TMap<int, TSubclassOf<UObjectTile>> ValidNeighboursS;
-
-
-	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-	TMap<int, TSubclassOf<UObjectTile>> ValidNeighboursW;
+	TArray<FString> ValidNeighboursS;
 
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-	TMap<int, TSubclassOf<UObjectTile>> ValidNeighboursE;
+	TArray<FString> ValidNeighboursW;
+
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	TArray<FString> ValidNeighboursE;
 
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)

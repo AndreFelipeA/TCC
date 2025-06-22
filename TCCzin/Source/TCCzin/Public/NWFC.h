@@ -8,6 +8,24 @@
 #include "NWFC.generated.h"
 
 
+USTRUCT()
+struct FMatrix2DWFC
+{
+	GENERATED_BODY()
+public:
+
+	UPROPERTY(EditAnywhere)
+	TArray<FMatrixObject> M;
+
+	
+	FMatrixObject& operator[] (int32 i) { return M[i]; }
+	
+	void Add(const FMatrixObject& Matrix)
+	{
+		M.Add(Matrix);
+	}
+};
+
 /**
  * 
  */
@@ -35,9 +53,9 @@ protected:
 	int C;
 
 	
-	TArray<TArray<FMatrixObject>> NWFCMatrix;
+	TArray<FMatrixObject> NWFCMatrix;
 
-	void OutputWFC(TArray<FMatrixObject>& G);
+	void OutputWFC();
 	
 	
 };

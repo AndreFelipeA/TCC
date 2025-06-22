@@ -57,6 +57,18 @@ public:
 	}
 };
 
+USTRUCT()
+struct FBacktrackStack
+{
+	GENERATED_BODY()
+public:
+	TArray<TTuple<int,int,int>> StackElements;
+	TArray<TArray<FMatrixObject>> StackDomain;
+	TArray<TArray<FMatrixBool>> StackBoolDomain;
+	
+	
+};
+
 enum EObserveStatus
 {
 	Success,
@@ -76,16 +88,19 @@ class TCCZIN_API UWFC : public UObject
 public:
 	UWFC();
 
-	// TArray<FMatrixObject>
 	UFUNCTION(BlueprintCallable)
 	 void WFC(int32 Width, int32 Height);
 
+	TArray<FMatrixObject> InternalWfc(int32 width, int32 height, TArray<FMatrixObject> Internal, TArray<FMatrixBool> InternalBool);
+
+	
+
 	TSubclassOf<UObjectTile> GetRandomTile();	
-protected:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	TMap<int , TSubclassOf<UObjectTile>> Tiles;
+protected:
 
-	TDeque<TTuple<int,int>> Queue;
+	TDeque<TTuple<int,int,int>> Queue;
 
 
 	TArray<FMatrixArray> SpawnGrid;
@@ -94,6 +109,8 @@ protected:
 
 	
 	TArray<FMatrixBool> MBool;
+
+	FBacktrackStack BacktrackStack;
 	
 	UPROPERTY(EditAnywhere)
 	int Width;
@@ -102,7 +119,7 @@ protected:
 
 	int64 Infinity = 9223372036854775807;
 
-	TTuple<int,int> Wave;
+	TTuple<int,int,int> Wave;
 
 	int GetNextPos();
 
@@ -114,8 +131,12 @@ protected:
 	
 	void WaveToOutput();
 
-	void AC3();
+	bool AC3();
 
 	void print();
+
+	void RemoveFromDomain();
+
+	TArray<FMatrixObject> CopyDomain();
 	
 };

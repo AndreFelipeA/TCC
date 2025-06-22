@@ -14,7 +14,7 @@ ATile::ATile(void)
 	
 	UStaticMesh* cubeMesh = ConstructorHelpers::FObjectFinder<UStaticMesh>(TEXT("StaticMesh'/Engine/BasicShapes/Cube.Cube'")).Object;
 	StaticMeshComponent->SetStaticMesh(StaticMesh);
-	FVector Scale = [] { return FVector(15, 15, 15); }();
+	FVector Scale = [] { return FVector(12, 12, 12); }();
 	
 	StaticMeshComponent->SetRelativeScale3D(Scale);
 	StaticMeshComponent->SetMaterial(0, MaterialInterface);
