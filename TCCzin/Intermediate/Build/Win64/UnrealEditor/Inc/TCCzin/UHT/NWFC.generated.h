@@ -14,11 +14,18 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 #endif
 #define TCCZIN_NWFC_generated_h
 
-#define FID_TCC_TCCzin_Source_TCCzin_Public_NWFC_h_17_RPC_WRAPPERS_NO_PURE_DECLS \
+#define FID_TCC_TCCzin_Source_TCCzin_Public_NWFC_h_14_GENERATED_BODY \
+	friend struct Z_Construct_UScriptStruct_FMatrix2DWFC_Statics; \
+	TCCZIN_API static class UScriptStruct* StaticStruct();
+
+
+template<> TCCZIN_API UScriptStruct* StaticStruct<struct FMatrix2DWFC>();
+
+#define FID_TCC_TCCzin_Source_TCCzin_Public_NWFC_h_35_RPC_WRAPPERS_NO_PURE_DECLS \
 	DECLARE_FUNCTION(execNestedWFC);
 
 
-#define FID_TCC_TCCzin_Source_TCCzin_Public_NWFC_h_17_INCLASS_NO_PURE_DECLS \
+#define FID_TCC_TCCzin_Source_TCCzin_Public_NWFC_h_35_INCLASS_NO_PURE_DECLS \
 private: \
 	static void StaticRegisterNativesUNWFC(); \
 	friend struct Z_Construct_UClass_UNWFC_Statics; \
@@ -27,7 +34,7 @@ public: \
 	DECLARE_SERIALIZER(UNWFC)
 
 
-#define FID_TCC_TCCzin_Source_TCCzin_Public_NWFC_h_17_ENHANCED_CONSTRUCTORS \
+#define FID_TCC_TCCzin_Source_TCCzin_Public_NWFC_h_35_ENHANCED_CONSTRUCTORS \
 private: \
 	/** Private move- and copy-constructors, should never be used */ \
 	UNWFC(UNWFC&&); \
@@ -39,13 +46,13 @@ public: \
 	NO_API virtual ~UNWFC();
 
 
-#define FID_TCC_TCCzin_Source_TCCzin_Public_NWFC_h_14_PROLOG
-#define FID_TCC_TCCzin_Source_TCCzin_Public_NWFC_h_17_GENERATED_BODY \
+#define FID_TCC_TCCzin_Source_TCCzin_Public_NWFC_h_32_PROLOG
+#define FID_TCC_TCCzin_Source_TCCzin_Public_NWFC_h_35_GENERATED_BODY \
 PRAGMA_DISABLE_DEPRECATION_WARNINGS \
 public: \
-	FID_TCC_TCCzin_Source_TCCzin_Public_NWFC_h_17_RPC_WRAPPERS_NO_PURE_DECLS \
-	FID_TCC_TCCzin_Source_TCCzin_Public_NWFC_h_17_INCLASS_NO_PURE_DECLS \
-	FID_TCC_TCCzin_Source_TCCzin_Public_NWFC_h_17_ENHANCED_CONSTRUCTORS \
+	FID_TCC_TCCzin_Source_TCCzin_Public_NWFC_h_35_RPC_WRAPPERS_NO_PURE_DECLS \
+	FID_TCC_TCCzin_Source_TCCzin_Public_NWFC_h_35_INCLASS_NO_PURE_DECLS \
+	FID_TCC_TCCzin_Source_TCCzin_Public_NWFC_h_35_ENHANCED_CONSTRUCTORS \
 private: \
 PRAGMA_ENABLE_DEPRECATION_WARNINGS
 

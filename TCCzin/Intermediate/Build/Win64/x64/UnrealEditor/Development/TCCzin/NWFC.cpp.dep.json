@@ -19,7 +19,9 @@
             "d:\\tcc\\tcczin\\intermediate\\build\\win64\\unrealeditor\\inc\\tcczin\\uht\\wfc.generated.h",
             "d:\\tcc\\tcczin\\intermediate\\build\\win64\\unrealeditor\\inc\\tcczin\\uht\\nwfc.generated.h",
             "d:\\tcc\\tcczin\\source\\tcczin\\public\\wfc\\objecttile.h",
-            "d:\\tcc\\tcczin\\intermediate\\build\\win64\\unrealeditor\\inc\\tcczin\\uht\\objecttile.generated.h"
+            "d:\\tcc\\tcczin\\intermediate\\build\\win64\\unrealeditor\\inc\\tcczin\\uht\\objecttile.generated.h",
+            "d:\\tcc\\tcczin\\source\\tcczin\\public\\wfc\\tile.h",
+            "d:\\tcc\\tcczin\\intermediate\\build\\win64\\unrealeditor\\inc\\tcczin\\uht\\tile.generated.h"
         ],
         "ImportedModules": [],
         "ImportedHeaderUnits": []

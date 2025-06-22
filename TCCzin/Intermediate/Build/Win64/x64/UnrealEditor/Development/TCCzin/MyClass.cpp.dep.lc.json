@@ -1,0 +1,14 @@
+{
+    "Version": "1.2",
+    "Data": {
+        "Source": "d:\\tcc\\tcczin\\source\\tcczin\\private\\myclass.cpp",
+        "ProvidedModule": "",
+        "PCH": "d:\\tcc\\tcczin\\intermediate\\build\\win64\\x64\\tcczineditor\\development\\unrealed\\sharedpch.unrealed.project.valapi.cpp20.h.pch",
+        "Includes": [
+            "d:\\tcc\\tcczin\\intermediate\\build\\win64\\x64\\unrealeditor\\development\\tcczin\\definitions.tcczin.h",
+            "d:\\tcc\\tcczin\\source\\tcczin\\public\\myclass.h"
+        ],
+        "ImportedModules": [],
+        "ImportedHeaderUnits": []
+    }
+}

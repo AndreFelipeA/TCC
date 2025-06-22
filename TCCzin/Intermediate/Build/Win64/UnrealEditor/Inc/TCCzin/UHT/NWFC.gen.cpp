@@ -6,6 +6,7 @@
 
 #include "UObject/GeneratedCppIncludes.h"
 #include "TCCzin/Public/NWFC.h"
+#include "TCCzin/Public/WFC/WFC.h"
 PRAGMA_DISABLE_DEPRECATION_WARNINGS
 void EmptyLinkFunctionForGeneratedCodeNWFC() {}
 
@@ -14,8 +15,74 @@ COREUOBJECT_API UClass* Z_Construct_UClass_UObject();
 TCCZIN_API UClass* Z_Construct_UClass_UNWFC();
 TCCZIN_API UClass* Z_Construct_UClass_UNWFC_NoRegister();
 TCCZIN_API UClass* Z_Construct_UClass_UWFC_NoRegister();
+TCCZIN_API UScriptStruct* Z_Construct_UScriptStruct_FMatrix2DWFC();
+TCCZIN_API UScriptStruct* Z_Construct_UScriptStruct_FMatrixObject();
 UPackage* Z_Construct_UPackage__Script_TCCzin();
 // End Cross Module References
+
+// Begin ScriptStruct FMatrix2DWFC
+static FStructRegistrationInfo Z_Registration_Info_UScriptStruct_Matrix2DWFC;
+class UScriptStruct* FMatrix2DWFC::StaticStruct()
+{
+	if (!Z_Registration_Info_UScriptStruct_Matrix2DWFC.OuterSingleton)
+	{
+		Z_Registration_Info_UScriptStruct_Matrix2DWFC.OuterSingleton = GetStaticStruct(Z_Construct_UScriptStruct_FMatrix2DWFC, (UObject*)Z_Construct_UPackage__Script_TCCzin(), TEXT("Matrix2DWFC"));
+	}
+	return Z_Registration_Info_UScriptStruct_Matrix2DWFC.OuterSingleton;
+}
+template<> TCCZIN_API UScriptStruct* StaticStruct<FMatrix2DWFC>()
+{
+	return FMatrix2DWFC::StaticStruct();
+}
+struct Z_Construct_UScriptStruct_FMatrix2DWFC_Statics
+{
+#if WITH_METADATA
+	static constexpr UECodeGen_Private::FMetaDataPairParam Struct_MetaDataParams[] = {
+		{ "ModuleRelativePath", "Public/NWFC.h" },
+	};
+	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_M_MetaData[] = {
+		{ "Category", "Matrix2DWFC" },
+		{ "ModuleRelativePath", "Public/NWFC.h" },
+	};
+#endif // WITH_METADATA
+	static const UECodeGen_Private::FStructPropertyParams NewProp_M_Inner;
+	static const UECodeGen_Private::FArrayPropertyParams NewProp_M;
+	static const UECodeGen_Private::FPropertyParamsBase* const PropPointers[];
+	static void* NewStructOps()
+	{
+		return (UScriptStruct::ICppStructOps*)new UScriptStruct::TCppStructOps<FMatrix2DWFC>();
+	}
+	static const UECodeGen_Private::FStructParams StructParams;
+};
+const UECodeGen_Private::FStructPropertyParams Z_Construct_UScriptStruct_FMatrix2DWFC_Statics::NewProp_M_Inner = { "M", nullptr, (EPropertyFlags)0x0000000000000000, UECodeGen_Private::EPropertyGenFlags::Struct, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, 0, Z_Construct_UScriptStruct_FMatrixObject, METADATA_PARAMS(0, nullptr) }; // 553631897
+const UECodeGen_Private::FArrayPropertyParams Z_Construct_UScriptStruct_FMatrix2DWFC_Statics::NewProp_M = { "M", nullptr, (EPropertyFlags)0x0010000000000001, UECodeGen_Private::EPropertyGenFlags::Array, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(FMatrix2DWFC, M), EArrayPropertyFlags::None, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_M_MetaData), NewProp_M_MetaData) }; // 553631897
+const UECodeGen_Private::FPropertyParamsBase* const Z_Construct_UScriptStruct_FMatrix2DWFC_Statics::PropPointers[] = {
+	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UScriptStruct_FMatrix2DWFC_Statics::NewProp_M_Inner,
+	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UScriptStruct_FMatrix2DWFC_Statics::NewProp_M,
+};
+static_assert(UE_ARRAY_COUNT(Z_Construct_UScriptStruct_FMatrix2DWFC_Statics::PropPointers) < 2048);
+const UECodeGen_Private::FStructParams Z_Construct_UScriptStruct_FMatrix2DWFC_Statics::StructParams = {
+	(UObject* (*)())Z_Construct_UPackage__Script_TCCzin,
+	nullptr,
+	&NewStructOps,
+	"Matrix2DWFC",
+	Z_Construct_UScriptStruct_FMatrix2DWFC_Statics::PropPointers,
+	UE_ARRAY_COUNT(Z_Construct_UScriptStruct_FMatrix2DWFC_Statics::PropPointers),
+	sizeof(FMatrix2DWFC),
+	alignof(FMatrix2DWFC),
+	RF_Public|RF_Transient|RF_MarkAsNative,
+	EStructFlags(0x00000001),
+	METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UScriptStruct_FMatrix2DWFC_Statics::Struct_MetaDataParams), Z_Construct_UScriptStruct_FMatrix2DWFC_Statics::Struct_MetaDataParams)
+};
+UScriptStruct* Z_Construct_UScriptStruct_FMatrix2DWFC()
+{
+	if (!Z_Registration_Info_UScriptStruct_Matrix2DWFC.InnerSingleton)
+	{
+		UECodeGen_Private::ConstructUScriptStruct(Z_Registration_Info_UScriptStruct_Matrix2DWFC.InnerSingleton, Z_Construct_UScriptStruct_FMatrix2DWFC_Statics::StructParams);
+	}
+	return Z_Registration_Info_UScriptStruct_Matrix2DWFC.InnerSingleton;
+}
+// End ScriptStruct FMatrix2DWFC
 
 // Begin Class UNWFC Function NestedWFC
 struct Z_Construct_UFunction_UNWFC_NestedWFC_Statics
@@ -156,13 +223,16 @@ UNWFC::~UNWFC() {}
 // Begin Registration
 struct Z_CompiledInDeferFile_FID_TCC_TCCzin_Source_TCCzin_Public_NWFC_h_Statics
 {
+	static constexpr FStructRegisterCompiledInInfo ScriptStructInfo[] = {
+		{ FMatrix2DWFC::StaticStruct, Z_Construct_UScriptStruct_FMatrix2DWFC_Statics::NewStructOps, TEXT("Matrix2DWFC"), &Z_Registration_Info_UScriptStruct_Matrix2DWFC, CONSTRUCT_RELOAD_VERSION_INFO(FStructReloadVersionInfo, sizeof(FMatrix2DWFC), 2738846706U) },
+	};
 	static constexpr FClassRegisterCompiledInInfo ClassInfo[] = {
 		{ Z_Construct_UClass_UNWFC, UNWFC::StaticClass, TEXT("UNWFC"), &Z_Registration_Info_UClass_UNWFC, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(UNWFC), 131480880U) },
 	};
 };
-static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_TCC_TCCzin_Source_TCCzin_Public_NWFC_h_494450944(TEXT("/Script/TCCzin"),
+static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_TCC_TCCzin_Source_TCCzin_Public_NWFC_h_2257473595(TEXT("/Script/TCCzin"),
 	Z_CompiledInDeferFile_FID_TCC_TCCzin_Source_TCCzin_Public_NWFC_h_Statics::ClassInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_TCC_TCCzin_Source_TCCzin_Public_NWFC_h_Statics::ClassInfo),
-	nullptr, 0,
+	Z_CompiledInDeferFile_FID_TCC_TCCzin_Source_TCCzin_Public_NWFC_h_Statics::ScriptStructInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_TCC_TCCzin_Source_TCCzin_Public_NWFC_h_Statics::ScriptStructInfo),
 	nullptr, 0);
 // End Registration
 PRAGMA_ENABLE_DEPRECATION_WARNINGS

@@ -89,7 +89,7 @@ public:
 	UWFC();
 
 	UFUNCTION(BlueprintCallable)
-	 void WFC(int32 Width, int32 Height);
+	 void WFC(int32 Width, int32 Height, int Heuristica);
 
 	TArray<FMatrixObject> InternalWfc(int32 width, int32 height, TArray<FMatrixObject> Internal, TArray<FMatrixBool> InternalBool);
 
@@ -124,10 +124,12 @@ protected:
 	int GetNextPos();
 
 
-	EObserveStatus Observe();
+	EObserveStatus Observe(int Heuristica);
 	
 
 	int Mrv();
+
+	int HeuristicaMaluca();
 	
 	void WaveToOutput();
 

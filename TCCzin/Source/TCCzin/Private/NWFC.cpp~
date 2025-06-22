@@ -1,0 +1,144 @@
+// Fill out your copyright notice in the Description page of Project Settings.
+
+
+#include "NWFC.h"
+#include "WFC/ObjectTile.h"
+#include "WFC/Tile.h"
+#include "WFC/WFC.h"
+#include "HAL/PlatformTime.h"
+#include "HAL/PlatformMemory.h"
+UNWFC::UNWFC()
+{
+	wfc = NewObject<UWFC>(UWFC::StaticClass());
+}
+
+void UNWFC::NestedWFC()
+{
+	int A = (Width*(C-1)+1);
+	int B = (Height*(C-1)+1);
+
+	Width = A;
+	Height = B;
+
+	
+	for (int i = 0; i < A; i++)
+	{
+		NWFCMatrix.Add(FMatrixObject());
+	}
+
+	for (int i = 0; i < A; ++i)
+	{
+		for (int j  = 0; j < B; j++)
+		{
+			UObjectTile* Tile = NewObject<UObjectTile>();
+			Tile->ValidTiles = wfc->Tiles;
+			NWFCMatrix[i].Add(*Tile);
+		}
+	}
+
+	int numSubgridsX = (A - 1) / (C - 1); 
+	int numSubgridsY = (B - 1) / (C - 1);
+
+
+
+	for (int d = 0; d <= numSubgridsX + numSubgridsY - 2; d++)
+	{
+		for (int a = 0; a <= d; a++) {
+			int b = d - a;
+
+			if (a < numSubgridsX && b < numSubgridsY)
+			{
+				int startX = a * (C - 1);
+				int startY = b * (C - 1);
+
+				TArray<FMatrixObject> G;
+				TArray<FMatrixBool> GBool;
+
+				for (int i = 0; i < C; i++)
+				{
+					G.Add(FMatrixObject());
+					GBool.Add(FMatrixBool());
+				}
+
+				UWFC *NewWFC = NewObject<UWFC>(UWFC::StaticClass());
+				NewWFC->Tiles = wfc->Tiles;
+				
+				for (int i = 0; i < C; i++)
+				{
+					for (int j = 0; j < C; ++j)
+					{
+						auto Tile = NWFCMatrix[startX + i][startY + j];
+						G[i].Add(Tile);
+						GBool[i].Add(true);
+					}
+					
+				}
+
+				if (b > 0)
+				{
+					int leftStartY = (b-1) * (C-1);
+					for (int i = 0; i < C; i++)
+					{
+						G[i][0] = NWFCMatrix[startX + i][leftStartY + (C - 1)];
+						GBool[i][0] = false;
+						NewWFC->Queue.PushLast(TTuple<int, int, int>(i, 0, -1));
+					}
+				}
+
+				if (a > 0)
+				{
+					int topStartX = (a-1) * (C-1);
+					for (int i = 0; i < C; i++)
+					{
+						G[0][i] = NWFCMatrix[topStartX + (C - 1)][startY + i];
+						GBool[0][i] = false;
+						NewWFC->Queue.PushLast(TTuple<int, int, int>(0, i, -1));
+						
+					}
+				}
+
+		
+
+				TArray<FMatrixObject> Gab = NewWFC->InternalWfc(C,C,G, GBool);
+
+				for (int i = 0; i < C; i++)
+				{
+					for (int j = 0; j < C; j++)
+					{
+						NWFCMatrix[startX + i][startY + j] = Gab[i][j];
+					}
+				}
+				
+				
+			}
+		}
+	}
+
+
+	OutputWFC();
+}
+
+void UNWFC::OutputWFC()
+{
+	for (int i = 0; i < Width; i++)
+	{
+		for (int j = 0; j < Height; j++)
+		{
+
+
+			const FVector SpawnLocation = FVector(i*(10*10), j*(10*10), 0.0f);
+			const FRotator SpawnRotation = FRotator(0.0f, 0.0f, 0.0f);
+			FActorSpawnParameters SpawnInfo;
+			
+			
+			ATile* SpawntTile = GetWorld()->SpawnActor<ATile>(ATile::StaticClass(), SpawnLocation, SpawnRotation, SpawnInfo);
+			SpawntTile->MaterialInterface = NWFCMatrix[i][j]->MaterialInterface;
+			SpawntTile->StaticMeshComponent->SetMaterial(0, NWFCMatrix[i][j]->MaterialInterface);
+			SpawntTile->StaticMeshComponent->SetStaticMesh(NWFCMatrix[i][j]->StaticMesh);
+
+			// UE_LOG(LogClass, Log, TEXT("Tile %d:%d, Bloco: %s"), i,j, *Tile->StaticMesh->GetName());
+		}
+	}
+}
+
+

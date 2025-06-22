@@ -35,11 +35,18 @@ template<> TCCZIN_API UScriptStruct* StaticStruct<struct FMatrixBool>();
 
 template<> TCCZIN_API UScriptStruct* StaticStruct<struct FMatrixObject>();
 
-#define FID_TCC_TCCzin_Source_TCCzin_Public_WFC_WFC_h_74_RPC_WRAPPERS_NO_PURE_DECLS \
+#define FID_TCC_TCCzin_Source_TCCzin_Public_WFC_WFC_h_63_GENERATED_BODY \
+	friend struct Z_Construct_UScriptStruct_FBacktrackStack_Statics; \
+	TCCZIN_API static class UScriptStruct* StaticStruct();
+
+
+template<> TCCZIN_API UScriptStruct* StaticStruct<struct FBacktrackStack>();
+
+#define FID_TCC_TCCzin_Source_TCCzin_Public_WFC_WFC_h_86_RPC_WRAPPERS_NO_PURE_DECLS \
 	DECLARE_FUNCTION(execWFC);
 
 
-#define FID_TCC_TCCzin_Source_TCCzin_Public_WFC_WFC_h_74_INCLASS_NO_PURE_DECLS \
+#define FID_TCC_TCCzin_Source_TCCzin_Public_WFC_WFC_h_86_INCLASS_NO_PURE_DECLS \
 private: \
 	static void StaticRegisterNativesUWFC(); \
 	friend struct Z_Construct_UClass_UWFC_Statics; \
@@ -48,7 +55,7 @@ public: \
 	DECLARE_SERIALIZER(UWFC)
 
 
-#define FID_TCC_TCCzin_Source_TCCzin_Public_WFC_WFC_h_74_ENHANCED_CONSTRUCTORS \
+#define FID_TCC_TCCzin_Source_TCCzin_Public_WFC_WFC_h_86_ENHANCED_CONSTRUCTORS \
 private: \
 	/** Private move- and copy-constructors, should never be used */ \
 	UWFC(UWFC&&); \
@@ -60,13 +67,13 @@ public: \
 	NO_API virtual ~UWFC();
 
 
-#define FID_TCC_TCCzin_Source_TCCzin_Public_WFC_WFC_h_71_PROLOG
-#define FID_TCC_TCCzin_Source_TCCzin_Public_WFC_WFC_h_74_GENERATED_BODY \
+#define FID_TCC_TCCzin_Source_TCCzin_Public_WFC_WFC_h_83_PROLOG
+#define FID_TCC_TCCzin_Source_TCCzin_Public_WFC_WFC_h_86_GENERATED_BODY \
 PRAGMA_DISABLE_DEPRECATION_WARNINGS \
 public: \
-	FID_TCC_TCCzin_Source_TCCzin_Public_WFC_WFC_h_74_RPC_WRAPPERS_NO_PURE_DECLS \
-	FID_TCC_TCCzin_Source_TCCzin_Public_WFC_WFC_h_74_INCLASS_NO_PURE_DECLS \
-	FID_TCC_TCCzin_Source_TCCzin_Public_WFC_WFC_h_74_ENHANCED_CONSTRUCTORS \
+	FID_TCC_TCCzin_Source_TCCzin_Public_WFC_WFC_h_86_RPC_WRAPPERS_NO_PURE_DECLS \
+	FID_TCC_TCCzin_Source_TCCzin_Public_WFC_WFC_h_86_INCLASS_NO_PURE_DECLS \
+	FID_TCC_TCCzin_Source_TCCzin_Public_WFC_WFC_h_86_ENHANCED_CONSTRUCTORS \
 private: \
 PRAGMA_ENABLE_DEPRECATION_WARNINGS
 

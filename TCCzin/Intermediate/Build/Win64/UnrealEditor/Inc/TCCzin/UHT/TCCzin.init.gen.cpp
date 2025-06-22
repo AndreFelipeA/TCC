@@ -17,13 +17,13 @@ void EmptyLinkFunctionForGeneratedCodeTCCzin_init() {}
 				nullptr,
 				0,
 				PKG_CompiledIn | 0x00000000,
-				0xA697FFD8,
-				0x793754B1,
+				0xE849C2B5,
+				0x78CE923C,
 				METADATA_PARAMS(0, nullptr)
 			};
 			UECodeGen_Private::ConstructUPackage(Z_Registration_Info_UPackage__Script_TCCzin.OuterSingleton, PackageParams);
 		}
 		return Z_Registration_Info_UPackage__Script_TCCzin.OuterSingleton;
 	}
-	static FRegisterCompiledInInfo Z_CompiledInDeferPackage_UPackage__Script_TCCzin(Z_Construct_UPackage__Script_TCCzin, TEXT("/Script/TCCzin"), Z_Registration_Info_UPackage__Script_TCCzin, CONSTRUCT_RELOAD_VERSION_INFO(FPackageReloadVersionInfo, 0xA697FFD8, 0x793754B1));
+	static FRegisterCompiledInInfo Z_CompiledInDeferPackage_UPackage__Script_TCCzin(Z_Construct_UPackage__Script_TCCzin, TEXT("/Script/TCCzin"), Z_Registration_Info_UPackage__Script_TCCzin, CONSTRUCT_RELOAD_VERSION_INFO(FPackageReloadVersionInfo, 0xE849C2B5, 0x78CE923C));
 PRAGMA_ENABLE_DEPRECATION_WARNINGS

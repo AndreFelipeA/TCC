@@ -264,9 +264,13 @@
     <ClCompile Include="..\..\Source\TCCzin\TCCzin.h">
       <AdditionalIncludeDirectories>$(ClCompile_AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
+    <ClCompile Include="..\..\Source\TCCzin\Private\MyClass.cpp">
+      <AdditionalIncludeDirectories>$(ClCompile_AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
     <ClCompile Include="..\..\Source\TCCzin\Private\NWFC.cpp">
       <AdditionalIncludeDirectories>$(ClCompile_AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
+    <None Include="..\..\Source\TCCzin\Private\NWFC.cpp~"/>
     <ClCompile Include="..\..\Source\TCCzin\Private\WFC\ObjectTile.cpp">
       <AdditionalIncludeDirectories>$(ClCompile_AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
@@ -276,16 +280,20 @@
     <ClCompile Include="..\..\Source\TCCzin\Private\WFC\WFC.cpp">
       <AdditionalIncludeDirectories>$(ClCompile_AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
-    <None Include="..\..\Source\TCCzin\Private\WFC\WFC.cpp~"/>
+    <ClCompile Include="..\..\Source\TCCzin\Public\MyClass.h">
+      <AdditionalIncludeDirectories>$(ClCompile_AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
     <ClCompile Include="..\..\Source\TCCzin\Public\NWFC.h">
       <AdditionalIncludeDirectories>$(ClCompile_AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <ClCompile Include="..\..\Source\TCCzin\Public\WFC\ObjectTile.h">
       <AdditionalIncludeDirectories>$(ClCompile_AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
+    <None Include="..\..\Source\TCCzin\Public\WFC\ObjectTile.h~"/>
     <ClCompile Include="..\..\Source\TCCzin\Public\WFC\Tile.h">
       <AdditionalIncludeDirectories>$(ClCompile_AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
+    <None Include="..\..\Source\TCCzin\Public\WFC\Tile.h~"/>
     <ClCompile Include="..\..\Source\TCCzin\Public\WFC\WFC.h">
       <AdditionalIncludeDirectories>$(ClCompile_AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>

@@ -5,13 +5,19 @@
 
 #include "WFC/ObjectTile.h"
 #include "WFC/Tile.h"
-
+#include "HAL/PlatformTime.h"
+#include "HAL/PlatformMemory.h"
 UWFC::UWFC()
 {
 }
 
-void UWFC::WFC(const int32 width,const int32 height)
+
+void UWFC::WFC(const int32 width,const int32 height, int Heuristica)
 {
+	double StartTime = FPlatformTime::Seconds();
+	const FPlatformMemoryStats BeforeStats = FPlatformMemory::GetStats();
+	int backtracking = 0;
+	
 	this->Height = height;
 	this->Width = width;
 
@@ -40,7 +46,7 @@ void UWFC::WFC(const int32 width,const int32 height)
 	{
 
 		
-		EObserveStatus result = Observe();
+		EObserveStatus result = Observe(Heuristica);
 		
 		if (result == Failure)
 		{
@@ -51,12 +57,21 @@ void UWFC::WFC(const int32 width,const int32 height)
 		{
 
 			WaveToOutput();
+			double EndTime = FPlatformTime::Seconds();
+			double DeltaMs = (EndTime - StartTime) * 1000.0;
+			UE_LOG(LogTemp, Log, TEXT("WFC levou %.3f ms"), DeltaMs);
+			const FPlatformMemoryStats AfterStats = FPlatformMemory::GetStats();
+			SIZE_T UsedBytes = AfterStats.UsedPhysical - BeforeStats.UsedPhysical;
+			UE_LOG(LogTemp, Log, TEXT("MinhaFuncao usou ~%.2f MB"), UsedBytes / (1024.0f * 1024.0f));
+			UE_LOG(LogTemp, Log, TEXT("Backtrackings %d"), backtracking);
+
 			return;
 		}
 		
 		if (AC3() == false)
 		{
-			
+			UE_LOG(LogTemp, Log, TEXT("BackTracking"));
+			backtracking++;
 			// print();
 			Wave = BacktrackStack.StackElements.Last();
 			Grid = BacktrackStack.StackDomain.Last();
@@ -83,6 +98,7 @@ TArray<FMatrixObject> UWFC::InternalWfc(int32 width, int32 height, TArray<FMatri
 	Grid = Internal;
 
 
+
 	
 
 	
@@ -98,7 +114,7 @@ TArray<FMatrixObject> UWFC::InternalWfc(int32 width, int32 height, TArray<FMatri
 
 	while (true)
 	{
-		EObserveStatus result = Observe();
+		EObserveStatus result = Observe(0);
 		
 		if (result == Failure)
 		{
@@ -150,12 +166,18 @@ int UWFC::GetNextPos()
 	return 0;
 }
 
-EObserveStatus UWFC::Observe()
+EObserveStatus UWFC::Observe(int Heuristica)
 {
-	int Argmin = Mrv();
-	if (Argmin == -2)
+
+	int Argmin;
+	if (Heuristica == 1)
 	{
-		return Failure;
+		 Argmin = HeuristicaMaluca();
+		
+	}
+	else
+	{
+		 Argmin = Mrv();
 	}
 
 
@@ -179,6 +201,7 @@ EObserveStatus UWFC::Observe()
 	BacktrackStack.StackElements.Push(Wave);
 	BacktrackStack.StackDomain.Push(CopyDomain());
 	BacktrackStack.StackBoolDomain.Push(MBool);
+	// UE_LOG(LogClass, Log, TEXT("Escolhi %d:%d,"), x,y);
 
 	
 			
@@ -221,6 +244,7 @@ int UWFC::Mrv()
 				{
 					Min = Domain;
 					Wave = TTuple<int, int, int>(i, j, -1);
+					
 					Argmin = -1;
 					
 					
@@ -229,6 +253,32 @@ int UWFC::Mrv()
 		}
 	}
 
+	return Argmin;
+}
+
+int UWFC::HeuristicaMaluca()
+{
+	bool found = false;
+	int32 Argmin = 0;
+	for (int d = 0; d <= Width+Height-2 && !found; d++)
+	{
+		for (int a = 0; a <= d; a++)
+		{
+			int b = d - a;
+
+			if (a < Width && b < Height)
+			{
+				if (MBool[a][b] == true)
+				{
+					Wave = TTuple<int, int, int>(a, b, -1);
+					found = true;
+
+					Argmin = -1;
+					break;
+				}
+			}
+		}	
+	}
 	return Argmin;
 }
 
@@ -418,7 +468,7 @@ void UWFC::RemoveFromDomain()
 	int x = Wave.Get<0>();
 	int y = Wave.Get<1>();
 	int i = Wave.Get<2>();
-		MBool[x][y] = true;
+	MBool[x][y] = true;
 	if (i != -1)
 	{
 		Grid[x][y]->ValidTiles.Remove(i);

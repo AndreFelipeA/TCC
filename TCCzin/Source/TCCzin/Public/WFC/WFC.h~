@@ -89,7 +89,7 @@ public:
 	UWFC();
 
 	UFUNCTION(BlueprintCallable)
-	 void WFC(int32 Width, int32 Height);
+	 void WFC(int32 Width, int32 Height, int Heuristica);
 
 	TArray<FMatrixObject> InternalWfc(int32 width, int32 height, TArray<FMatrixObject> Internal, TArray<FMatrixBool> InternalBool);
 
@@ -98,9 +98,9 @@ public:
 	TSubclassOf<UObjectTile> GetRandomTile();	
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	TMap<int , TSubclassOf<UObjectTile>> Tiles;
+	TDeque<TTuple<int,int,int>> Queue;
 protected:
 
-	TDeque<TTuple<int,int,int>> Queue;
 
 
 	TArray<FMatrixArray> SpawnGrid;
@@ -128,6 +128,8 @@ protected:
 	
 
 	int Mrv();
+
+	int HeuristicaMaluca();
 	
 	void WaveToOutput();
 

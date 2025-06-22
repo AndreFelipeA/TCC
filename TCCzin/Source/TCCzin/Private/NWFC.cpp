@@ -5,6 +5,8 @@
 #include "WFC/ObjectTile.h"
 #include "WFC/Tile.h"
 #include "WFC/WFC.h"
+#include "HAL/PlatformTime.h"
+#include "HAL/PlatformMemory.h"
 UNWFC::UNWFC()
 {
 	wfc = NewObject<UWFC>(UWFC::StaticClass());
@@ -12,6 +14,8 @@ UNWFC::UNWFC()
 
 void UNWFC::NestedWFC()
 {
+	double StartTime = FPlatformTime::Seconds();
+	const FPlatformMemoryStats BeforeStats = FPlatformMemory::GetStats();
 	int A = (Width*(C-1)+1);
 	int B = (Height*(C-1)+1);
 
@@ -114,6 +118,12 @@ void UNWFC::NestedWFC()
 
 
 	OutputWFC();
+	double EndTime = FPlatformTime::Seconds();
+	double DeltaMs = (EndTime - StartTime) * 1000.0;
+	UE_LOG(LogTemp, Log, TEXT("WFC levou %.3f ms"), DeltaMs);
+	const FPlatformMemoryStats AfterStats = FPlatformMemory::GetStats();
+	SIZE_T UsedBytes = AfterStats.UsedPhysical - BeforeStats.UsedPhysical;
+	UE_LOG(LogTemp, Log, TEXT("MinhaFuncao usou ~%.2f MB"), UsedBytes / (1024.0f * 1024.0f));
 }
 
 void UNWFC::OutputWFC()
