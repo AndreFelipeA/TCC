@@ -17,7 +17,7 @@ void UWFC::WFC(const int32 width,const int32 height, int Heuristica)
 	double StartTime = FPlatformTime::Seconds();
 	const FPlatformMemoryStats BeforeStats = FPlatformMemory::GetStats();
 	int backtracking = 0;
-	
+
 	this->Height = height;
 	this->Width = width;
 
@@ -27,7 +27,7 @@ void UWFC::WFC(const int32 width,const int32 height, int Heuristica)
 		Grid.Add(FMatrixObject());
 		SpawnGrid.Add(FMatrixArray());
 	}
-	
+
 	for (int i = 0; i < Width; ++i)
 	{
 		for (int j  = 0; j < Height; j++)
@@ -38,16 +38,13 @@ void UWFC::WFC(const int32 width,const int32 height, int Heuristica)
 			Grid[i].Add(*Tile);
 		}
 	}
-
-
-
-
+	
 	while (true)
 	{
 
 		
 		EObserveStatus result = Observe(Heuristica);
-		
+	
 		if (result == Failure)
 		{
 
@@ -56,32 +53,30 @@ void UWFC::WFC(const int32 width,const int32 height, int Heuristica)
 		else if (result == Success)
 		{
 
-			WaveToOutput();
+			// WaveToOutput();
 			double EndTime = FPlatformTime::Seconds();
 			double DeltaMs = (EndTime - StartTime) * 1000.0;
 			UE_LOG(LogTemp, Log, TEXT("WFC levou %.3f ms"), DeltaMs);
 			const FPlatformMemoryStats AfterStats = FPlatformMemory::GetStats();
-			SIZE_T UsedBytes = AfterStats.UsedPhysical - BeforeStats.UsedPhysical;
-			UE_LOG(LogTemp, Log, TEXT("MinhaFuncao usou ~%.2f MB"), UsedBytes / (1024.0f * 1024.0f));
-			UE_LOG(LogTemp, Log, TEXT("Backtrackings %d"), backtracking);
+			int64_t DeltaBytes = int64_t(AfterStats.UsedPhysical) - int64_t(BeforeStats.UsedPhysical);
+			float DeltaMB = DeltaBytes / (1024.0f * 1024.0f);
+			UE_LOG(LogTemp, Log, TEXT("MinhaFuncao usou ~%.2f MB"), DeltaMB);
 
-			return;
+			break;
 		}
-		
+	
 		if (AC3() == false)
 		{
 			UE_LOG(LogTemp, Log, TEXT("BackTracking"));
-			backtracking++;
-			// print();
-			Wave = BacktrackStack.StackElements.Last();
-			Grid = BacktrackStack.StackDomain.Last();
-			MBool = BacktrackStack.StackBoolDomain.Last();
-			BacktrackStack.StackElements.Pop();
-			BacktrackStack.StackDomain.Pop();
-			BacktrackStack.StackBoolDomain.Pop();
-			RemoveFromDomain();
+			// Wave = BacktrackStack.StackElements.Last();
+			// Grid = BacktrackStack.StackDomain.Last();
+			// MBool = BacktrackStack.StackBoolDomain.Last();
+			// BacktrackStack.StackElements.Pop();
+			// BacktrackStack.StackDomain.Pop();
+			// BacktrackStack.StackBoolDomain.Pop();
+			// RemoveFromDomain();
 
-			
+		
 		}
 
 
@@ -89,17 +84,13 @@ void UWFC::WFC(const int32 width,const int32 height, int Heuristica)
 	
 }
 
-TArray<FMatrixObject> UWFC::InternalWfc(int32 width, int32 height, TArray<FMatrixObject> Internal, TArray<FMatrixBool> InternalBool)
+TArray<FMatrixObject> UWFC::InternalWfc(int32 width, int32 height, TArray<FMatrixObject> Internal, TArray<FMatrixBool> InternalBool, int Heuristica)
 {
 	this->Height = height;
 	this->Width = width;
 
 	MBool = InternalBool;
 	Grid = Internal;
-
-
-
-	
 
 	
 	for (int i = 0; i < Width; ++i)
@@ -114,7 +105,7 @@ TArray<FMatrixObject> UWFC::InternalWfc(int32 width, int32 height, TArray<FMatri
 
 	while (true)
 	{
-		EObserveStatus result = Observe(0);
+		EObserveStatus result = Observe(Heuristica);
 		
 		if (result == Failure)
 		{
@@ -132,14 +123,15 @@ TArray<FMatrixObject> UWFC::InternalWfc(int32 width, int32 height, TArray<FMatri
 		if (AC3() == false)
 		{
 			
+			
 			// print();
-			Wave = BacktrackStack.StackElements.Last();
-			Grid = BacktrackStack.StackDomain.Last();
-			MBool = BacktrackStack.StackBoolDomain.Last();
-			BacktrackStack.StackElements.Pop();
-			BacktrackStack.StackDomain.Pop();
-			BacktrackStack.StackBoolDomain.Pop();
-			RemoveFromDomain();
+			// Wave = BacktrackStack.StackElements.Last();
+			// Grid = BacktrackStack.StackDomain.Last();
+			// MBool = BacktrackStack.StackBoolDomain.Last();
+			// BacktrackStack.StackElements.Pop();
+			// BacktrackStack.StackDomain.Pop();
+			// BacktrackStack.StackBoolDomain.Pop();
+			// RemoveFromDomain();
 
 
 	
@@ -151,15 +143,39 @@ TArray<FMatrixObject> UWFC::InternalWfc(int32 width, int32 height, TArray<FMatri
 
 int UWFC::GetNextPos()
 {
-	for (int i = 0; i < Width; i++)
+	int left   = 0;
+	int right  = Width  - 1;
+	int top    = 0;
+	int bottom = Height - 1;
+
+	while (left <= right && top <= bottom)
 	{
-		for (int j = 0; j < Height; j++)
-		{
-			if (MBool[i][j] == true)
-			{
-				Wave = TTuple<int, int, int>(i, j, -1);
-				return -1;
-			}
+		// 1) topo: x = left→right, y = top
+		for (int x = left; x <= right; ++x)
+			if (MBool[x][top])
+			{ Wave = TTuple<int,int,int>(x, top, -1); return -1; }
+		++top;
+
+		// 2) lateral direita: y = top→bottom, x = right
+		for (int y = top; y <= bottom; ++y)
+			if (MBool[right][y])
+			{ Wave = TTuple<int,int,int>(right, y, -1); return -1; }
+		--right;
+
+		// 3) base: x = right→left, y = bottom
+		if (top <= bottom) {
+			for (int x = right; x >= left; --x)
+				if (MBool[x][bottom])
+				{ Wave = TTuple<int,int,int>(x, bottom, -1); return -1; }
+			--bottom;
+		}
+
+		// 4) lateral esquerda: y = bottom→top, x = left
+		if (left <= right) {
+			for (int y = bottom; y >= top; --y)
+				if (MBool[left][y])
+				{ Wave = TTuple<int,int,int>(left, y, -1); return -1; }
+			++left;
 		}
 	}
 
@@ -198,10 +214,9 @@ EObserveStatus UWFC::Observe(int Heuristica)
 
 	TSubclassOf<UObjectTile> tile = GetRandomTile();
 
-	BacktrackStack.StackElements.Push(Wave);
-	BacktrackStack.StackDomain.Push(CopyDomain());
-	BacktrackStack.StackBoolDomain.Push(MBool);
-	// UE_LOG(LogClass, Log, TEXT("Escolhi %d:%d,"), x,y);
+	// BacktrackStack.StackElements.Push(Wave);
+	// BacktrackStack.StackDomain.Push(CopyDomain());
+	// BacktrackStack.StackBoolDomain.Push(MBool);
 
 	
 			
@@ -287,6 +302,7 @@ bool UWFC::AC3()
 {
 		while (!Queue.IsEmpty())
     	{
+			// UE_LOG(LogClass, Log, TEXT("AC3 Queue TAM:%d"), Queue.Num());
     		TTuple<int, int, int> tile = Queue.First();
     		Queue.PopFirst();
 
@@ -294,8 +310,8 @@ bool UWFC::AC3()
     		int y = tile.Get<1>();
 			
     		
-    		int Directions_x[4] = {0, -1, 1, 0};
-    		int Directions_y[4] = {-1, 0, 0, 1};
+    		int Directions_y[4] = {0, -1, 1, 0};
+    		int Directions_x[4] = {-1, 0, 0, 1};
     
     		for (int i = 0; i < 4; i++)
     		{
@@ -310,7 +326,7 @@ bool UWFC::AC3()
     					{
 
     						UObjectTile* CompareTile = it.Value()->GetDefaultObject<UObjectTile>();
-    						
+
     						
     						if (i == 0)
     						{
@@ -356,11 +372,11 @@ bool UWFC::AC3()
 			    	if (x + Directions_x[i] >= 0 && x + Directions_x[i] < Width && y + Directions_y[i] >= 0 && y + Directions_y[i] < Height && MBool[x + Directions_x[i]][y + Directions_y[i]] == true)
 			    	{
 						  
-			    		bool bHasCompatible = false;
 			    		
 			    		for (auto it = Grid[x+Directions_x[i]][y+Directions_y[i]]->ValidTiles.CreateConstIterator(); it; ++it)
 			    		{
 			    			
+			    			bool bHasIncompatible = false;
 			    			int NeighborKey = it.Key();
 			    			UObjectTile* CompareTile = it.Value()->GetDefaultObject<UObjectTile>();
 			    			for (auto it2 = Grid[x][y]->ValidTiles.CreateConstIterator(); it2; ++it2)
@@ -369,31 +385,31 @@ bool UWFC::AC3()
 			    				switch (i)
 			    				{
 			    				case 0:
-			    					if (CompareTile->ValidNeighboursN[0] != CompareTile2->ValidNeighboursS[0])
-			    						bHasCompatible = true;
+			    					if (CompareTile2->ValidNeighboursN[0] == CompareTile->ValidNeighboursS[0])
+			    						bHasIncompatible = true;
 			    					break;
 			    				case 1:
-			    					if (CompareTile->ValidNeighboursW[0] !=  CompareTile2->ValidNeighboursE[0])
-			    						bHasCompatible = true;
+			    					if (CompareTile2->ValidNeighboursW[0] ==  CompareTile->ValidNeighboursE[0])
+			    						bHasIncompatible = true;
 			    					break;
 			    				case 2:
-			    					if (CompareTile->ValidNeighboursE[0] !=  CompareTile2->ValidNeighboursW[0])
-			    						bHasCompatible = true;
+			    					if (CompareTile2->ValidNeighboursE[0] ==  CompareTile->ValidNeighboursW[0])
+			    						bHasIncompatible = true;
 			    					break;
 			    				case 3:
-			    					if (CompareTile->ValidNeighboursS[0] !=  CompareTile2->ValidNeighboursN[0])
-			    						bHasCompatible = true;
+			    					if (CompareTile2->ValidNeighboursS[0] ==  CompareTile->ValidNeighboursN[0])
+			    						bHasIncompatible = true;
 			    					break;
 			    				}
+				    
 				     
-				     
-			    				if (bHasCompatible)
+			    				if (bHasIncompatible == true)
 			    				{
 			    					break;		
 			    				}
 				     
 			    			}
-			    			if (!bHasCompatible)
+			    			if (bHasIncompatible == false)
 			    			{
 			    				TilesToRemove.Add(NeighborKey);
 			    			}
@@ -408,7 +424,8 @@ bool UWFC::AC3()
     				{
 						
     					Grid[x+Directions_x[i]][y+Directions_y[i]]->ValidTiles.Remove(TilesToRemove[j]);
-    				
+
+    					// UE_LOG(LogTemp, Warning, TEXT("Removed tile:%s"), *Grid[x+Directions_x[i]][y+Directions_y[i]]->ValidTiles.Find(TilesToRemove[j])->GetDefaultObject()->MaterialInterface->GetName());
     				}
 
     				Queue.PushLast(TTuple<int,int,int> (x+Directions_x[i],y+Directions_y[i], -1));
@@ -446,6 +463,36 @@ void UWFC::print()
 			FString stringNeighbourS;
 			FString stringNeighbourW;
 			FString stringNeighbourE;
+
+			for (auto it = Tile->ValidTiles.CreateConstIterator(); it; ++it)
+			{
+				string += FString::FromInt(it.Key());
+				string += " ";
+			}
+
+			for (auto it = Tile->ValidNeighboursN.CreateConstIterator(); it; ++it)
+			{
+				stringNeighbourN += GetData(*it);
+				stringNeighbourN += " ";
+			}
+
+			for (auto it = Tile->ValidNeighboursS.CreateConstIterator(); it; ++it)
+			{
+				stringNeighbourS += GetData(*it);
+				stringNeighbourS += " ";
+			}
+
+			for (auto it = Tile->ValidNeighboursW.CreateConstIterator(); it; ++it)
+			{
+				stringNeighbourW += GetData(*it);
+				stringNeighbourW += " ";
+			}
+
+			for (auto it = Tile->ValidNeighboursE.CreateConstIterator(); it; ++it)
+			{
+				stringNeighbourE += GetData(*it);
+				stringNeighbourE += " ";
+			}
 
 			if (Tile->StaticMesh != nullptr)
 			{

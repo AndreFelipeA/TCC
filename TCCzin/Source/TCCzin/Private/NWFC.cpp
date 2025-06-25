@@ -12,118 +12,123 @@ UNWFC::UNWFC()
 	wfc = NewObject<UWFC>(UWFC::StaticClass());
 }
 
-void UNWFC::NestedWFC()
+void UNWFC::NestedWFC(int Heuristica)
 {
-	double StartTime = FPlatformTime::Seconds();
-	const FPlatformMemoryStats BeforeStats = FPlatformMemory::GetStats();
-	int A = (Width*(C-1)+1);
-	int B = (Height*(C-1)+1);
-
-	Width = A;
-	Height = B;
-
 	
-	for (int i = 0; i < A; i++)
-	{
-		NWFCMatrix.Add(FMatrixObject());
-	}
+		double StartTime = FPlatformTime::Seconds();
+		const FPlatformMemoryStats BeforeStats = FPlatformMemory::GetStats();
+	
+		int A = (Width*(C-1)+1);
+		int B = (Height*(C-1)+1);
 
-	for (int i = 0; i < A; ++i)
-	{
-		for (int j  = 0; j < B; j++)
-		{
-			UObjectTile* Tile = NewObject<UObjectTile>();
-			Tile->ValidTiles = wfc->Tiles;
-			NWFCMatrix[i].Add(*Tile);
-		}
-	}
-
-	int numSubgridsX = (A - 1) / (C - 1); 
-	int numSubgridsY = (B - 1) / (C - 1);
-
-
-
-	for (int d = 0; d <= numSubgridsX + numSubgridsY - 2; d++)
-	{
-		for (int a = 0; a <= d; a++) {
-			int b = d - a;
-
-			if (a < numSubgridsX && b < numSubgridsY)
-			{
-				int startX = a * (C - 1);
-				int startY = b * (C - 1);
-
-				TArray<FMatrixObject> G;
-				TArray<FMatrixBool> GBool;
-
-				for (int i = 0; i < C; i++)
-				{
-					G.Add(FMatrixObject());
-					GBool.Add(FMatrixBool());
-				}
-
-				UWFC *NewWFC = NewObject<UWFC>(UWFC::StaticClass());
-				NewWFC->Tiles = wfc->Tiles;
-				
-				for (int i = 0; i < C; i++)
-				{
-					for (int j = 0; j < C; ++j)
-					{
-						auto Tile = NWFCMatrix[startX + i][startY + j];
-						G[i].Add(Tile);
-						GBool[i].Add(true);
-					}
-					
-				}
-
-				if (b > 0)
-				{
-					int leftStartY = (b-1) * (C-1);
-					for (int i = 0; i < C; i++)
-					{
-						G[i][0] = NWFCMatrix[startX + i][leftStartY + (C - 1)];
-						GBool[i][0] = false;
-						NewWFC->Queue.PushLast(TTuple<int, int, int>(i, 0, -1));
-					}
-				}
-
-				if (a > 0)
-				{
-					int topStartX = (a-1) * (C-1);
-					for (int i = 0; i < C; i++)
-					{
-						G[0][i] = NWFCMatrix[topStartX + (C - 1)][startY + i];
-						GBool[0][i] = false;
-						NewWFC->Queue.PushLast(TTuple<int, int, int>(0, i, -1));
-						
-					}
-				}
+		Width = A;
+		Height = B;
 
 		
+		for (int i = 0; i < A; i++)
+		{
+			NWFCMatrix.Add(FMatrixObject());
+		}
 
-				TArray<FMatrixObject> Gab = NewWFC->InternalWfc(C,C,G, GBool);
-
-				for (int i = 0; i < C; i++)
-				{
-					for (int j = 0; j < C; j++)
-					{
-						NWFCMatrix[startX + i][startY + j] = Gab[i][j];
-					}
-				}
-				
-				
+		for (int i = 0; i < A; ++i)
+		{
+			for (int j  = 0; j < B; j++)
+			{
+				UObjectTile* Tile = NewObject<UObjectTile>();
+				Tile->ValidTiles = wfc->Tiles;
+				NWFCMatrix[i].Add(*Tile);
 			}
 		}
-	}
+
+		int numSubgridsX = (A - 1) / (C - 1); 
+		int numSubgridsY = (B - 1) / (C - 1);
 
 
-	OutputWFC();
-	double EndTime = FPlatformTime::Seconds();
-	double DeltaMs = (EndTime - StartTime) * 1000.0;
-	UE_LOG(LogTemp, Log, TEXT("WFC levou %.3f ms"), DeltaMs);
-	const FPlatformMemoryStats AfterStats = FPlatformMemory::GetStats();
-	SIZE_T UsedBytes = AfterStats.UsedPhysical - BeforeStats.UsedPhysical;
-	UE_LOG(LogTemp, Log, TEXT("MinhaFuncao usou ~%.2f MB"), UsedBytes / (1024.0f * 1024.0f));
+
+		for (int d = 0; d <= numSubgridsX + numSubgridsY - 2; d++)
+		{
+			for (int a = 0; a <= d; a++) {
+				int b = d - a;
+
+				if (a < numSubgridsX && b < numSubgridsY)
+				{
+					int startX = a * (C - 1);
+					int startY = b * (C - 1);
+
+					TArray<FMatrixObject> G;
+					TArray<FMatrixBool> GBool;
+
+					for (int i = 0; i < C; i++)
+					{
+						G.Add(FMatrixObject());
+						GBool.Add(FMatrixBool());
+					}
+
+					UWFC *NewWFC = NewObject<UWFC>(UWFC::StaticClass());
+					NewWFC->Tiles = wfc->Tiles;
+					
+					for (int i = 0; i < C; i++)
+					{
+						for (int j = 0; j < C; ++j)
+						{
+							auto Tile = NWFCMatrix[startX + i][startY + j];
+							G[i].Add(Tile);
+							GBool[i].Add(true);
+						}
+						
+					}
+
+					if (b > 0)
+					{
+						int leftStartY = (b-1) * (C-1);
+						for (int i = 0; i < C; i++)
+						{
+							G[i][0] = NWFCMatrix[startX + i][leftStartY + (C - 1)];
+							GBool[i][0] = false;
+							NewWFC->Queue.PushLast(TTuple<int, int, int>(i, 0, -1));
+						}
+					}
+
+					if (a > 0)
+					{
+						int topStartX = (a-1) * (C-1);
+						for (int i = 0; i < C; i++)
+						{
+							G[0][i] = NWFCMatrix[topStartX + (C - 1)][startY + i];
+							GBool[0][i] = false;
+							NewWFC->Queue.PushLast(TTuple<int, int, int>(0, i, -1));
+							
+						}
+					}
+
+			
+
+					TArray<FMatrixObject> Gab = NewWFC->InternalWfc(C,C,G, GBool, Heuristica);
+
+					for (int i = 0; i < C; i++)
+					{
+						for (int j = 0; j < C; j++)
+						{
+							NWFCMatrix[startX + i][startY + j] = Gab[i][j];
+						}
+					}
+					
+					
+				}
+			}
+		}
+
+
+		// OutputWFC();
+		double EndTime = FPlatformTime::Seconds();
+		double DeltaMs = (EndTime - StartTime) * 1000.0;
+		UE_LOG(LogTemp, Log, TEXT("WFC levou %.3f ms"), DeltaMs);
+		const FPlatformMemoryStats AfterStats = FPlatformMemory::GetStats();
+		int64_t DeltaBytes = int64_t(AfterStats.UsedPhysical) - int64_t(BeforeStats.UsedPhysical);
+		float DeltaMB = DeltaBytes / (1024.0f * 1024.0f);
+		UE_LOG(LogTemp, Log, TEXT("MinhaFuncao usou ~%.2f MB"), DeltaMB);
+	
+
 }
 
 void UNWFC::OutputWFC()

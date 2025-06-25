@@ -91,7 +91,7 @@ public:
 	UFUNCTION(BlueprintCallable)
 	 void WFC(int32 Width, int32 Height, int Heuristica);
 
-	TArray<FMatrixObject> InternalWfc(int32 width, int32 height, TArray<FMatrixObject> Internal, TArray<FMatrixBool> InternalBool);
+	TArray<FMatrixObject> InternalWfc(int32 width, int32 height, TArray<FMatrixObject> Internal, TArray<FMatrixBool> InternalBool, int Heuristica);
 
 	
 

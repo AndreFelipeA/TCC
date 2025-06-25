@@ -124,7 +124,7 @@ protected:
 	int GetNextPos();
 
 
-	EObserveStatus Observe();
+	EObserveStatus Observe(int Heuristica);
 	
 
 	int Mrv();

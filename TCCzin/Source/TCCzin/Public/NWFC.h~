@@ -37,7 +37,7 @@ public:
 	UNWFC();
 
 	UFUNCTION(Blueprintable, BlueprintCallable)
-	void NestedWFC(int Heuristica);
+	void NestedWFC();
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	UWFC* wfc;
